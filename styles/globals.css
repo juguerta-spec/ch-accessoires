@@ -1,0 +1,566 @@
+/* ============================================================
+   CH Accessoires — Feuille de styles globale
+   Source de vérité absolue pour toutes les variables CSS
+   Aucune couleur ni police ne doit être hardcodée dans les composants
+   ============================================================ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --------------------------------------------------
+     COULEURS PRINCIPALES
+     -------------------------------------------------- */
+  --ch-noir:        #0A0A0A;   /* Fond dark, textes forts, fond logo, urgency bar */
+  --ch-blanc:       #FAFAF7;   /* Fond page, cartes produit, confirmation */
+  --ch-or:          #C9A84C;   /* CTA principal, prix accent, sélection active */
+  --ch-or-clair:    #E8D49A;   /* Hover bouton or, badges or clairs */
+  --ch-or-dark:     #8B6F2E;   /* Texte sur fond or-clair, liens prix */
+
+  /* --------------------------------------------------
+     NEUTRES
+     -------------------------------------------------- */
+  --ch-beige:       #F0EDE8;   /* Sections alternées (WhyChooseUs, GiftSection, FAQ, OrderForm) */
+  --ch-gris-clair:  #C8C4BC;   /* Borders, séparateurs, input underline */
+  --ch-gris-texte:  #6B6660;   /* Corps texte secondaire, labels formulaire, auteurs avis */
+
+  /* --------------------------------------------------
+     STATUTS CRM — admin uniquement
+     -------------------------------------------------- */
+  --ch-succes:      #3A6B36;
+  --ch-succes-bg:   #EDF2EC;
+  --ch-danger:      #8B3232;
+  --ch-danger-bg:   #F5EAEA;
+  --ch-warning:     #8B6F2E;
+  --ch-warning-bg:  #F5EDD4;
+  --ch-info:        #1A4A8A;
+  --ch-info-bg:     #E8EEF7;
+
+  /* --------------------------------------------------
+     ESPACEMENT
+     -------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+
+  /* --------------------------------------------------
+     TYPOGRAPHIE
+     Chargées via Google Fonts CDN dans app/layout.tsx
+     -------------------------------------------------- */
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-arabic:  'Tajawal', sans-serif;
+
+  /* --------------------------------------------------
+     BORDURES
+     -------------------------------------------------- */
+  --ch-border:      0.5px solid var(--ch-gris-clair);
+  --ch-border-or:   1.5px solid var(--ch-or);
+  --ch-border-noir: 1.5px solid var(--ch-noir);
+}
+
+/* --------------------------------------------------
+   RESET & BASE
+   -------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--ch-blanc);
+  color: var(--ch-noir);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --------------------------------------------------
+   RÈGLES GLOBALES — direction RTL (arabe)
+   Appliquée via dir="rtl" sur <html> par useLanguage
+   -------------------------------------------------- */
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* Texte arabe — police Tajawal + taille augmentée pour lisibilité */
+[dir="rtl"] body,
+[dir="rtl"] p,
+[dir="rtl"] span,
+[dir="rtl"] label,
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select,
+[dir="rtl"] button {
+  font-family: var(--font-arabic), sans-serif;
+  letter-spacing: 0;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3 {
+  font-family: var(--font-arabic), sans-serif;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+/* Tailles augmentées en arabe pour la lisibilité (Tajawal a un x-height plus petit) */
+[dir="rtl"] body { font-size: 17px; line-height: 1.95; }
+[dir="rtl"] h1   { font-size: 36px; }
+[dir="rtl"] h2   { font-size: 28px; }
+[dir="rtl"] .input-underline { font-size: 17px; }
+[dir="rtl"] .input-label     { letter-spacing: 0; font-size: 14px; }
+[dir="rtl"] .btn-or,
+[dir="rtl"] .btn-noir,
+[dir="rtl"] .btn-outline      { letter-spacing: 0; font-size: 17px; }
+[dir="rtl"] .urgency-bar      { font-size: 14px; letter-spacing: 0; text-transform: none; }
+
+/* Select RTL */
+[dir="rtl"] select { text-align: right; direction: rtl; }
+
+/* Inversement des marges en RTL */
+[dir="rtl"] .prix-devise { margin-left: 0; margin-right: 4px; }
+
+/* --------------------------------------------------
+   TYPOGRAPHIE — hiérarchie storefront
+   -------------------------------------------------- */
+
+/* H1 — Nom produit */
+h1 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  color: var(--ch-noir);
+}
+
+/* H2 — Titre section */
+h2 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1.3;
+  color: var(--ch-noir);
+}
+
+/* H3 — Sous-section */
+h3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  color: var(--ch-noir);
+}
+
+@media (min-width: 768px) {
+  h1 { font-size: 48px; }
+  h2 { font-size: 32px; }
+  h3 { font-size: 22px; }
+}
+
+/* --------------------------------------------------
+   BOUTONS — classes utilitaires globales
+   -------------------------------------------------- */
+
+/* Bouton CTA principal — or (1 seul par page) */
+.btn-or {
+  background:      var(--ch-or);
+  color:           var(--ch-noir);
+  font-family:     var(--font-body);
+  font-size:       11px;
+  font-weight:     500;
+  letter-spacing:  0.15em;
+  text-transform:  uppercase;
+  padding:         16px 32px;
+  border:          none;
+  border-radius:   0;
+  width:           100%;
+  cursor:          pointer;
+  transition:      background 0.15s ease;
+  display:         block;
+  text-align:      center;
+  text-decoration: none;
+}
+.btn-or:hover  { background: var(--ch-or-clair); }
+.btn-or:active { background: var(--ch-or-dark); color: var(--ch-blanc); }
+
+/* Bouton secondaire — fond noir */
+.btn-noir {
+  background:      var(--ch-noir);
+  color:           var(--ch-blanc);
+  font-family:     var(--font-body);
+  font-size:       11px;
+  font-weight:     500;
+  letter-spacing:  0.15em;
+  text-transform:  uppercase;
+  padding:         16px 32px;
+  border:          none;
+  border-radius:   0;
+  width:           100%;
+  cursor:          pointer;
+  transition:      background 0.15s ease;
+  display:         block;
+  text-align:      center;
+  text-decoration: none;
+}
+.btn-noir:hover { background: #1f1f1f; }
+
+/* Bouton outline — bordure noire */
+.btn-outline {
+  background:      transparent;
+  color:           var(--ch-noir);
+  border:          1.5px solid var(--ch-noir);
+  border-radius:   0;
+  font-family:     var(--font-body);
+  font-size:       11px;
+  font-weight:     500;
+  letter-spacing:  0.15em;
+  text-transform:  uppercase;
+  padding:         16px 32px;
+  width:           100%;
+  cursor:          pointer;
+  transition:      background 0.15s ease, color 0.15s ease;
+  display:         block;
+  text-align:      center;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  background: var(--ch-noir);
+  color:      var(--ch-blanc);
+}
+
+/* --------------------------------------------------
+   BADGES
+   -------------------------------------------------- */
+.badge {
+  font-family:    var(--font-body);
+  font-size:      10px;
+  font-weight:    500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding:        3px 10px;
+  border-radius:  0;
+  display:        inline-block;
+}
+.badge-or      { background: var(--ch-or-clair);  color: var(--ch-or-dark); }
+.badge-noir    { background: var(--ch-noir);       color: var(--ch-or); }
+.badge-succes  { background: var(--ch-succes-bg);  color: var(--ch-succes); }
+.badge-danger  { background: var(--ch-danger-bg);  color: var(--ch-danger); }
+.badge-warning { background: var(--ch-warning-bg); color: var(--ch-warning); }
+.badge-info    { background: var(--ch-info-bg);    color: var(--ch-info); }
+
+/* --------------------------------------------------
+   INPUTS FORMULAIRE COD — style underline
+   -------------------------------------------------- */
+.input-underline {
+  border:          none;
+  border-bottom:   1px solid var(--ch-gris-clair);
+  border-radius:   0;
+  padding:         12px 0;
+  font-family:     var(--font-body);
+  font-size:       14px;
+  font-weight:     300;
+  color:           var(--ch-noir);
+  background:      transparent;
+  width:           100%;
+  outline:         none;
+  appearance:      none;
+  -webkit-appearance: none;
+}
+.input-underline:focus        { border-bottom-color: var(--ch-or); }
+.input-underline::placeholder { color: var(--ch-gris-clair); font-weight: 300; }
+
+/* Label au-dessus des inputs */
+.input-label {
+  font-family:     var(--font-body);
+  font-size:       10px;
+  font-weight:     500;
+  letter-spacing:  0.12em;
+  text-transform:  uppercase;
+  color:           var(--ch-gris-texte);
+  margin-bottom:   6px;
+  display:         block;
+}
+
+/* --------------------------------------------------
+   COLOR SELECTOR — dots coloris
+   -------------------------------------------------- */
+.color-dot {
+  width:         20px;
+  height:        20px;
+  border-radius: 50%;  /* Exception autorisée : ColorSelector uniquement */
+  border:        2px solid transparent;
+  cursor:        pointer;
+  transition:    border-color 0.1s;
+  display:       inline-block;
+}
+.color-dot.active {
+  border-color:   var(--ch-or);
+  outline:        2px solid var(--ch-blanc);
+  outline-offset: -5px;
+}
+
+/* --------------------------------------------------
+   LAYOUT — conteneurs
+   -------------------------------------------------- */
+.container-mobile {
+  width:      100%;
+  max-width:  480px;
+  margin:     0 auto;
+  padding:    0 20px;
+}
+
+.container {
+  width:      100%;
+  max-width:  1280px;
+  margin:     0 auto;
+  padding:    0 24px;
+}
+
+/* --------------------------------------------------
+   LAYOUT PRODUIT — desktop 2 colonnes
+   -------------------------------------------------- */
+.product-layout {
+  display: block;
+}
+
+.gallery-panel {
+  width: 100%;
+}
+
+.info-panel {
+  width: 100%;
+  padding: 32px 20px 48px;
+}
+
+@media (min-width: 768px) {
+  .product-layout {
+    display:               grid;
+    grid-template-columns: 56% 44%;
+    align-items:           start;
+    max-width:             1280px;
+    margin:                0 auto;
+    min-height:            100vh;
+  }
+
+  .gallery-panel {
+    position: sticky;
+    top:      108px; /* urgency 40px + header 68px */
+    height:   calc(100vh - 108px);
+    overflow: hidden;
+  }
+
+  .info-panel {
+    padding:    56px 48px 80px;
+    border-left: 0.5px solid rgba(201,168,76,0.2);
+    min-height: calc(100vh - 108px);
+  }
+}
+
+/* --------------------------------------------------
+   GALERIE — layout responsive
+   -------------------------------------------------- */
+.gallery-inner {
+  display:        flex;
+  flex-direction: column;
+  width:          100%;
+  background:     #FFFFFF;
+}
+
+/* Thumbs verticaux — desktop uniquement */
+.gallery-thumbs-col {
+  display: none;
+}
+
+/* Thumbs horizontaux — mobile uniquement */
+.gallery-thumbs-row {
+  display:    flex;
+  gap:        8px;
+  padding:    10px 16px;
+  overflow-x: auto;
+  background: #FFFFFF;
+}
+
+/* Zone image principale */
+.gallery-image-wrap {
+  position:     relative;
+  width:        100%;
+  aspect-ratio: 3/4;
+  overflow:     hidden;
+  background:   #FFFFFF;
+}
+
+@media (min-width: 768px) {
+  .gallery-inner {
+    flex-direction: row;
+    height:         100%;
+    gap:            0;
+  }
+
+  .gallery-thumbs-col {
+    display:        flex;
+    flex-direction: column;
+    gap:            6px;
+    width:          76px;
+    flex-shrink:    0;
+    padding:        16px 12px 16px 16px;
+    overflow-y:     auto;
+    background:     #FFFFFF;
+  }
+
+  .gallery-thumbs-row {
+    display: none;
+  }
+
+  .gallery-image-wrap {
+    flex:         1;
+    aspect-ratio: unset;
+    height:       100%;
+  }
+}
+
+/* RTL — inverser les colonnes produit */
+[dir="rtl"] .product-layout {
+  direction: rtl;
+}
+[dir="rtl"] .info-panel {
+  border-left:  none;
+  border-right: 0.5px solid rgba(201,168,76,0.2);
+}
+[dir="rtl"] .gallery-thumbs-col {
+  padding: 16px 16px 16px 12px;
+}
+
+/* --------------------------------------------------
+   SECTIONS ÉDITORIALES
+   -------------------------------------------------- */
+.section-dark {
+  background: var(--ch-noir);
+  color:      var(--ch-blanc);
+}
+
+.section-light {
+  background: var(--ch-blanc);
+}
+
+.section-beige {
+  background: var(--ch-beige);
+}
+
+/* --------------------------------------------------
+   URGENCY BAR
+   -------------------------------------------------- */
+.urgency-bar {
+  background:      var(--ch-noir);
+  color:           var(--ch-or);
+  font-family:     var(--font-body);
+  font-size:       10px;
+  font-weight:     500;
+  letter-spacing:  0.18em;
+  text-transform:  uppercase;
+  text-align:      center;
+  padding:         10px 16px;
+  position:        sticky;
+  top:             0;
+  z-index:         50;
+}
+
+/* --------------------------------------------------
+   AVIS CLIENTS
+   -------------------------------------------------- */
+.avis-card {
+  border:     var(--ch-border);
+  padding:    16px;
+  background: var(--ch-blanc);
+}
+
+.avis-etoiles {
+  color:         var(--ch-or);
+  font-size:     13px;
+  margin-bottom: 8px;
+}
+
+.avis-citation {
+  font-family: var(--font-display);
+  font-size:   15px;
+  font-style:  italic;
+  font-weight: 400;
+  color:       var(--ch-noir);
+  line-height: 1.6;
+}
+
+.avis-auteur {
+  font-family:    var(--font-body);
+  font-size:      10px;
+  font-weight:    500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--ch-gris-texte);
+  margin-top:     10px;
+}
+
+/* --------------------------------------------------
+   BLOC PRIX
+   -------------------------------------------------- */
+.prix-montant {
+  font-family: var(--font-body);
+  font-size:   24px;
+  font-weight: 500;
+  color:       var(--ch-noir);
+  line-height: 1;
+}
+
+.prix-devise {
+  font-size:   16px;
+  font-weight: 300;
+  color:       var(--ch-gris-texte);
+  margin-left: 4px;
+}
+
+.prix-sublabel {
+  font-size:      11px;
+  font-weight:    400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color:          var(--ch-gris-texte);
+  margin-top:     4px;
+}
+
+@media (min-width: 768px) {
+  .prix-montant { font-size: 30px; }
+}
+
+/* --------------------------------------------------
+   SPINNER DE CHARGEMENT
+   -------------------------------------------------- */
+.spinner {
+  display:          inline-block;
+  width:            16px;
+  height:           16px;
+  border:           2px solid transparent;
+  border-top-color: currentColor;
+  border-radius:    50%;
+  animation:        spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
