@@ -28,6 +28,8 @@ type JourGraphique = {
   nb:   number
 }
 
+type AbStats = { A: number; B: number; total: number }
+
 // ── Hauteur graphique ─────────────────────────────────────────
 
 const CHART_H = 140
@@ -159,6 +161,7 @@ export default function DashboardPage() {
   const [stats, setStats]       = useState<Stats>({ commandesAujourdhui: 0, revenusAujourdhui: 0, commandesMois: 0, tauxLivraison: 0, tauxConfirmation: 0, nbNouvelles: 0 })
   const [commandes, setCommandes] = useState<Commande[]>([])
   const [graphique, setGraphique] = useState<JourGraphique[]>([])
+  const [abStats, setAbStats]     = useState<AbStats>({ A: 0, B: 0, total: 0 })
   const [chargement, setChargement] = useState(true)
   const [actualisation, setActualisation] = useState(false)
 
@@ -211,6 +214,7 @@ export default function DashboardPage() {
       { data: confirmationData },
       { data: dernieres },
       { data: semaineData },
+      { data: abData },
     ] = await Promise.all([
       supabase.from('commandes').select('*', { count: 'exact', head: true }).gte('created_at', debutJour.toISOString()),
       supabase.from('commandes').select('montant').eq('statut', 'livree').gte('created_at', debutJour.toISOString()),
@@ -220,6 +224,8 @@ export default function DashboardPage() {
       supabase.from('commandes').select('statut').gte('created_at', debutMois.toISOString()),
       supabase.from('commandes').select('*, clients(nom, prenom, telephone), variantes(couleur_fr, couleur_ar)').order('created_at', { ascending: false }).limit(10),
       supabase.from('commandes').select('created_at').gte('created_at', debutSem.toISOString()),
+      // A/B stats — toutes commandes non-annulées avec variante renseignée
+      supabase.from('commandes').select('ab_variant').not('statut', 'eq', 'annulee').not('ab_variant', 'is', null),
     ])
 
     const livrees  = tauxData?.filter((c) => c.statut === 'livree').length || 0
@@ -248,6 +254,11 @@ export default function DashboardPage() {
       )
       if (jour) jour.nb++
     })
+
+    // Calcul stats A/B
+    const nbA = abData?.filter((c) => c.ab_variant === 'A').length || 0
+    const nbB = abData?.filter((c) => c.ab_variant === 'B').length || 0
+    setAbStats({ A: nbA, B: nbB, total: nbA + nbB })
 
     setStats({ commandesAujourdhui: nbJour || 0, revenusAujourdhui: revenuJour, commandesMois: nbMois || 0, tauxLivraison: taux, tauxConfirmation, nbNouvelles: nouvellesMois })
     setCommandes((dernieres as Commande[]) || [])
@@ -675,6 +686,129 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
+
+      {/* ── A/B Test — Comparaison variantes ─────────────────── */}
+      {abStats.total > 0 && (
+        <div
+          style={{
+            background: 'var(--ch-blanc)',
+            border: 'var(--ch-border)',
+            borderRadius: '4px',
+            padding: '22px 24px',
+            marginBottom: '24px',
+          }}
+        >
+          {/* En-tête */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+            <p style={{
+              fontFamily: fontCorps,
+              fontSize: isAr ? '13px' : '10px',
+              fontWeight: 500,
+              letterSpacing: isAr ? 0 : '0.1em',
+              textTransform: isAr ? 'none' : 'uppercase',
+              color: 'var(--ch-gris-texte)',
+              margin: 0,
+            }}>
+              {isAr ? 'اختبار A/B — مقارنة الفاريانت' : 'A/B Test — comparaison variantes'}
+            </p>
+            <span style={{
+              fontFamily: 'var(--font-body)',
+              fontSize: '11px',
+              color: 'var(--ch-gris-texte)',
+              direction: 'ltr',
+            }}>
+              {abStats.total} {isAr ? 'طلبات' : 'commandes'}
+            </span>
+          </div>
+
+          {/* Barre de comparaison */}
+          {(['A', 'B'] as const).map((v) => {
+            const nb  = v === 'A' ? abStats.A : abStats.B
+            const pct = abStats.total > 0 ? Math.round((nb / abStats.total) * 100) : 0
+            const label = v === 'A'
+              ? (isAr ? 'فاريانت A — الفورم فوق' : 'Variante A — formulaire en haut')
+              : (isAr ? 'فاريانت B — الفورم في الأسفل' : 'Variante B — formulaire en bas')
+            const isWinner = (v === 'A' && abStats.A > abStats.B) || (v === 'B' && abStats.B > abStats.A)
+            return (
+              <div key={v} style={{ marginBottom: '14px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-body)',
+                      fontSize: '10px',
+                      fontWeight: 700,
+                      background: isWinner ? 'var(--ch-or)' : 'var(--ch-gris-clair)',
+                      color: isWinner ? 'var(--ch-noir)' : 'var(--ch-blanc)',
+                      padding: '2px 8px',
+                      borderRadius: '2px',
+                      letterSpacing: '0.05em',
+                    }}>
+                      {v}
+                    </span>
+                    <span style={{
+                      fontFamily: fontCorps,
+                      fontSize: isAr ? '12px' : '11px',
+                      color: 'var(--ch-gris-texte)',
+                    }}>
+                      {label}
+                    </span>
+                    {isWinner && abStats.A !== abStats.B && (
+                      <span style={{
+                        fontFamily: 'var(--font-body)',
+                        fontSize: '9px',
+                        fontWeight: 500,
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        color: 'var(--ch-succes)',
+                        background: 'var(--ch-succes-bg)',
+                        padding: '1px 6px',
+                        borderRadius: '2px',
+                      }}>
+                        {isAr ? 'الأفضل' : 'Meilleur'}
+                      </span>
+                    )}
+                  </div>
+                  <span style={{
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    color: 'var(--ch-noir)',
+                    direction: 'ltr',
+                  }}>
+                    {nb} <span style={{ fontWeight: 300, fontSize: '11px', color: 'var(--ch-gris-texte)' }}>({pct}%)</span>
+                  </span>
+                </div>
+                {/* Barre de progression */}
+                <div style={{ height: '6px', background: 'var(--ch-beige)', borderRadius: '3px', overflow: 'hidden' }}>
+                  <div style={{
+                    height: '100%',
+                    width: `${pct}%`,
+                    background: isWinner ? 'var(--ch-or)' : 'var(--ch-gris-clair)',
+                    borderRadius: '3px',
+                    transition: 'width 0.5s ease',
+                  }} />
+                </div>
+              </div>
+            )
+          })}
+
+          {/* Note : données insuffisantes si < 30 commandes par variante */}
+          {(abStats.A < 30 || abStats.B < 30) && (
+            <p style={{
+              fontFamily: fontCorps,
+              fontSize: isAr ? '12px' : '10px',
+              color: 'var(--ch-gris-texte)',
+              marginTop: '12px',
+              fontStyle: 'italic',
+              opacity: 0.75,
+            }}>
+              {isAr
+                ? 'تحتاج 30+ طلب في كل فاريانت للنتائج الموثوقة'
+                : 'Résultats statistiquement fiables à partir de 30+ commandes par variante'}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* ── Tableau dernières commandes ───────────────────────── */}
       <div

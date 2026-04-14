@@ -43,6 +43,8 @@ type CommandeBody = {
   utm_content?: string
   // Déduplication Pixel
   event_id?: string
+  // A/B test — variante affichée lors de la commande
+  ab_variant?: string
 }
 
 export async function POST(request: NextRequest) {
@@ -239,6 +241,7 @@ export async function POST(request: NextRequest) {
       utm_source: body.utm_source || null,
       utm_campaign: body.utm_campaign || null,
       utm_content: body.utm_content || null,
+      ab_variant: body.ab_variant || null,
     })
     .select('id, numero')
     .single()

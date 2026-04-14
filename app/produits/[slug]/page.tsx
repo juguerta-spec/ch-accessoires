@@ -4,6 +4,7 @@
 // ============================================================
 
 import { notFound } from 'next/navigation'
+import { cookies } from 'next/headers'
 import type { Metadata } from 'next'
 import { createAdminClient } from '@/lib/supabase-admin'
 import type { Produit, Variante } from '@/lib/supabase'
@@ -69,11 +70,17 @@ export default async function ProduitPage({ params }: Props) {
 
   const commandesToday = (count || 0) + 12
 
+  // Lecture du cookie A/B assigné par le middleware
+  const cookieStore = cookies()
+  const abRaw = cookieStore.get('ch_ab')?.value
+  const abVariant: 'A' | 'B' = abRaw === 'B' ? 'B' : 'A'
+
   return (
     <LandingPageClient
       produit={produit}
       variantes={produit.variantes as Variante[]}
       commandesToday={commandesToday}
+      abVariant={abVariant}
     />
   )
 }

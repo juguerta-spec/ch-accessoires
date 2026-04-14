@@ -19,6 +19,7 @@ type Props = {
   variantes: Variante[]
   onVarianteChange: (v: Variante) => void
   prix: number
+  abVariant?: 'A' | 'B'
 }
 
 const REGEX_TEL = /^(05|06|07)[0-9]{8}$/
@@ -33,7 +34,7 @@ type Champs = {
 }
 type Erreurs = Partial<Record<keyof Champs, string>>
 
-export default function OrderForm({ variante, variantes, onVarianteChange, prix }: Props) {
+export default function OrderForm({ variante, variantes, onVarianteChange, prix, abVariant = 'A' }: Props) {
   const { estArabe } = useLanguage()
   const router = useRouter()
   const fa = estArabe ? 'var(--font-arabic)' : 'var(--font-body)'
@@ -107,6 +108,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
           utm_campaign: params.get('utm_campaign') || undefined,
           utm_content: params.get('utm_content') || undefined,
           event_id: eventIdAchat,
+          ab_variant: abVariant,
         }),
       })
       const json = await res.json()
