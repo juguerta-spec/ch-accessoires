@@ -32,7 +32,7 @@ export default function GiftSection() {
             marginBottom: '16px',
           }}
         >
-          {estArabe ? 'للرجال الذين يريدون الإهداء' : 'Pour ceux qui veulent offrir'}
+          {estArabe ? 'للراجل اللي يبغي يهدي' : 'Pour ceux qui veulent offrir'}
         </p>
 
         {/* Titre H2 */}
@@ -48,7 +48,7 @@ export default function GiftSection() {
           }}
         >
           {estArabe
-            ? 'أهدِها شيئاً لن تنساه'
+            ? 'عطيها حاجة ما تنساهاش'
             : 'Offrez-lui quelque chose qu\'elle n\'oubliera pas'}
         </h2>
 
@@ -66,7 +66,7 @@ export default function GiftSection() {
           }}
         >
           {estArabe
-            ? 'حقيبة CH Signature هي الهدية المثالية لعيد الميلاد، الذكرى السنوية أو أي مناسبة خاصة. أضف رسالة شخصية عند الطلب.'
+            ? 'شنطة CH Signature هي الهدية المثالية لعيد الميلاد، الذكرى السنوية أو أي مناسبة خاصة. زيد رسالة شخصية مع طلبك.'
             : 'Le Sac CH Signature est le cadeau idéal pour un anniversaire, une fête ou toute occasion spéciale. Ajoutez un message personnel à votre commande.'}
         </p>
 
@@ -76,7 +76,7 @@ export default function GiftSection() {
           className="btn-outline"
           style={{ display: 'inline-block', width: 'auto', padding: '16px 40px' }}
         >
-          {estArabe ? 'اطلب الآن' : 'Commander maintenant'}
+          {estArabe ? 'طلب دروك' : 'Commander maintenant'}
         </a>
       </div>
     </section>

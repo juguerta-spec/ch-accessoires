@@ -28,11 +28,11 @@ const FAQ_FR = [
 ]
 
 const FAQ_AR = [
-  { q: 'ما هو وقت التوصيل؟', r: "التوصيل يستغرق 1 إلى 5 أيام عمل في جميع الولايات الـ 58. سيتم التواصل معك هاتفياً قبل التسليم." },
-  { q: 'كيف يتم الدفع؟', r: "تدفع فقط عند استلام طلبك. لا حاجة لبطاقة بنكية — الدفع عند الاستلام (COD) فقط." },
-  { q: 'هل يمكنني فحص المنتج قبل الدفع؟', r: "نعم، بالتأكيد. افحص طلبك أمام الموزع قبل الدفع. هذا حقك." },
-  { q: 'هل الحقيبة متوفرة بأحجام أخرى؟', r: "حقيبة CH Signature متوفرة بحجم قياسي واحد، مصممة للاستخدام اليومي الأنيق." },
-  { q: 'كيف أختار اللون؟', r: "الأسود كلاسيكي وعملي. البورغاندي عميق وأنيق — مثالي للتميز." },
+  { q: 'قداش يأخذ الليفراج؟', r: "الليفراج يأخذ 1 إلى 5 أيام في قاع الـ 58 ولاية. غادي يتصلو بيك بالتيليفون قبل التسليم." },
+  { q: 'كيفاش يتم الدفع؟', r: "تدفع غير وقت تستلم طلبك. ما كاين بطاقة — الدفع عند الاستلام (COD) غير." },
+  { q: 'واش نقدر نفحص المنتج قبل ما ندفع؟', r: "آه، بالطبع. افحص طلبك قدام الموزع قبل ما تدفع. هذا حقك." },
+  { q: 'واش الشنطة متوفرة بأحجام أخرى؟', r: "شنطة CH Signature متوفرة بحجم قياسي واحد، مصنوعة للاستعمال اليومي الأنيق." },
+  { q: 'كيفاش نختار اللون؟', r: "الكحل كلاسيكي وعملي. البورغاندي عميق وأنيق — مثالي باش تتميزي." },
 ]
 
 function FaqItem({ q, r, open, onToggle, isAr }: { q: string; r: string; open: boolean; onToggle: () => void; isAr: boolean }) {
@@ -139,11 +139,11 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
   const fd = estArabe ? 'var(--font-arabic)' : 'var(--font-display)'
 
   const WHY = estArabe ? [
-    { n: '01', t: 'جودة فاخرة', c: 'جلد صناعي هاي-إند وبطانة متينة تدوم طويلاً. كل تفصيلة مُختارة بعناية.' },
-    { n: '02', t: 'سعر في المتناول', c: 'الفخامة بـ 2500 دج. جودة عالية بسعر عادل — بدون تنازل.' },
-    { n: '03', t: 'توصيل سريع', c: '1–5 أيام عمل في الـ 58 ولاية. متابعة هاتفية شخصية قبل التسليم.' },
-    { n: '04', t: 'راضٍ أو مسترد', c: 'افحص طلبك أمام الموزع قبل الدفع. رضاك أولويتنا.' },
-    { n: '05', t: 'هدية مثالية', c: 'تغليف أنيق وبطاقة هدية مخصصة عند الطلب. لحظة لا تُنسى.' },
+    { n: '01', t: 'جودة فاخرة', c: 'جلد صناعي هاي-إند وبطانة متينة تبقى مدة طويلة. كل تفصيلة مختارة بعناية.' },
+    { n: '02', t: 'ثمن في المتناول', c: 'الفاخر بـ 2500 دج. جودة عالية بثمن عادل — بلا تنازل.' },
+    { n: '03', t: 'توصيل سريع', c: '1–5 أيام في الـ 58 ولاية. متابعة هاتفية شخصية قبل التسليم.' },
+    { n: '04', t: 'راضٍ أو مسترد', c: 'افحص طلبك قدام الموزع قبل ما تدفع. رضاك الأولوية.' },
+    { n: '05', t: 'هدية مثالية', c: 'تغليف أنيق وبطاقة هدية مخصصة عند الطلب. لحظة ما تنساهاش.' },
   ] : [
     { n: '01', t: 'Qualité premium', c: 'Cuir synthétique haut de gamme, doublure robuste. Chaque détail est pensé pour durer.' },
     { n: '02', t: 'Prix accessible', c: 'Le luxe à 2 500 DA — sans compromis sur la qualité ni le style.' },
@@ -153,9 +153,9 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
   ]
 
   const etapesCM = estArabe ? [
-    { n: '1', t: 'اختاري لونك', c: 'أسود كلاسيكي أو بورغاندي عميق' },
-    { n: '2', t: 'أدخلي بياناتك', c: 'الاسم والهاتف والولاية — دقيقتان فقط' },
-    { n: '3', t: 'استلمي وادفعي', c: 'الموزع يوصل، تفحصين، تدفعين عند الاستلام' },
+    { n: '1', t: 'اختاري لونك', c: 'كحل كلاسيكي أو بورغاندي عميق' },
+    { n: '2', t: 'دخلي معلوماتك', c: 'الاسم والتيليفون والولاية — دقيقتين بصح' },
+    { n: '3', t: 'استلمي وادفعي', c: 'الموزع يجي، تفحصي، تدفعي عند الاستلام' },
   ] : [
     { n: '1', t: 'Choisissez votre coloris', c: 'Noir intemporel ou Burgundy profond' },
     { n: '2', t: 'Entrez vos coordonnées', c: 'Nom, téléphone, wilaya — 2 minutes chrono' },
@@ -163,9 +163,9 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
   ]
 
   const garanties = estArabe ? [
-    { ico: <IcoShield />, t: 'دفع عند الاستلام', c: 'لا دفع مسبق' },
-    { ico: <IcoTruck />, t: 'توصيل 1–5 أيام', c: '69 ولاية' },
-    { ico: <IcoCheckCircle />, t: 'افحص قبل الدفع', c: 'أمام الموزع' },
+    { ico: <IcoShield />, t: 'دفع عند الاستلام', c: 'ما كاين دفع مسبق' },
+    { ico: <IcoTruck />, t: 'ليفراج 1–5 أيام', c: '58 ولاية' },
+    { ico: <IcoCheckCircle />, t: 'افحص قبل ما تدفع', c: 'قدام الموزع' },
   ] : [
     { ico: <IcoShield />, t: 'Paiement à la réception', c: 'Aucun paiement avant' },
     { ico: <IcoTruck />, t: 'Livraison 1–5 jours', c: '58 wilayas' },
@@ -225,7 +225,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
             flexShrink: 0,
           }}
         >
-          {estArabe ? 'اطلبي الآن' : 'Commander'}
+          {estArabe ? 'طلبي دروك' : 'Commander'}
         </a>
       </div>
 
@@ -288,7 +288,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
 
           {/* Tag collection */}
           <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px' }}>
-            {estArabe ? 'مجموعة 2025' : 'Collection 2025'}
+            {estArabe ? 'كوليكسيون 2025' : 'Collection 2025'}
           </p>
 
           {/* Nom produit */}
@@ -324,9 +324,9 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
             marginBottom: '28px',
           }}>
             {varianteActive.stock <= 0
-              ? (estArabe ? 'غير متوفر حالياً' : 'Rupture de stock')
+              ? (estArabe ? 'مش متوفر دروك' : 'Rupture de stock')
               : varianteActive.stock <= 10
-                ? (estArabe ? `${varianteActive.stock} قطع متبقية فقط — اطلبي الآن` : `Seulement ${varianteActive.stock} pièce(s) disponible(s) — Commandez vite`)
+                ? (estArabe ? `${varianteActive.stock} قطع بقاو غير — طلبي دروك` : `Seulement ${varianteActive.stock} pièce(s) disponible(s) — Commandez vite`)
                 : (estArabe ? `${varianteActive.stock} قطعة متوفرة` : `${varianteActive.stock} pièces disponibles`)}
           </p>
 
@@ -345,7 +345,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(201,168,76,0.5)' }}>DA</span>
           </div>
           <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.35)', marginBottom: '14px' }}>
-            {estArabe ? 'دفع عند الاستلام — بدون بطاقة' : 'Paiement à la livraison — sans carte'}
+            {estArabe ? 'دفع عند الاستلام — بلا بطاقة' : 'Paiement à la livraison — sans carte'}
           </p>
 
           {/* Badge social proof — commandes du jour */}
@@ -365,7 +365,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
               }} />
               <span style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 400, color: 'rgba(201,168,76,0.8)', letterSpacing: estArabe ? 0 : '0.05em' }}>
                 {estArabe
-                  ? `${commandesToday} شخصاً طلبوا اليوم`
+                  ? `${commandesToday} شخص طلبوا اليوم`
                   : `${commandesToday} personnes ont commandé aujourd'hui`}
               </span>
             </div>
@@ -384,7 +384,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
           {/* ── Comment ça marche — 3 étapes avant le formulaire ── */}
           <div style={{ marginBottom: '32px' }}>
             <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.2em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(201,168,76,0.6)', marginBottom: '16px' }}>
-              {estArabe ? 'كيف يعمل ذلك' : 'Comment ça marche'}
+              {estArabe ? 'كيفاش يعمل هذا' : 'Comment ça marche'}
             </p>
             <div>
               {etapesCM.map((step, i) => (
@@ -458,18 +458,18 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
           {[
             {
               n: estArabe ? '— ١ —' : '— I —',
-              titre: estArabe ? 'جودة فاخرة' : 'Qualité premium',
-              corps: estArabe ? 'مواد مُختارة وتشطيبات يدوية دقيقة' : 'Matières sélectionnées, finitions artisanales',
+              titre: estArabe ? 'جودة عالية' : 'Qualité premium',
+              corps: estArabe ? 'خامات مختارة وتشطيبات يدوية دقيقة' : 'Matières sélectionnées, finitions artisanales',
             },
             {
               n: estArabe ? '— ٢ —' : '— II —',
-              titre: estArabe ? 'توصيل لكل الجزائر' : 'Livraison nationale',
-              corps: estArabe ? '1–5 أيام عمل إلى جميع الولايات الـ 58' : '1–5 jours ouvrables · 58 wilayas',
+              titre: estArabe ? 'ليفراج لقاع الجزائر' : 'Livraison nationale',
+              corps: estArabe ? '1–5 أيام في الـ 58 ولاية' : '1–5 jours ouvrables · 58 wilayas',
             },
             {
               n: estArabe ? '— ٣ —' : '— III —',
               titre: estArabe ? 'دفع عند الاستلام' : 'Paiement COD',
-              corps: estArabe ? 'تدفع عند استلام طلبك فقط' : 'Aucun paiement avant réception',
+              corps: estArabe ? 'ما تدفعش غير وقت تستلم' : 'Aucun paiement avant réception',
             },
           ].map((item, i) => (
             <div key={i} className="signature-item" style={{ textAlign: 'center' }}>
@@ -492,7 +492,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
               {estArabe ? 'مميزاتنا' : 'Notre promesse'}
             </p>
             <h2 style={{ fontFamily: fd, fontSize: estArabe ? '36px' : '42px', fontWeight: estArabe ? 400 : 300, letterSpacing: estArabe ? 0 : '0.03em', color: '#0A0A0A', lineHeight: 1.15 }}>
-              {estArabe ? 'لماذا تختار CH Accessoires ؟' : 'Pourquoi CH Accessoires ?'}
+              {estArabe ? 'علاش CH Accessoires؟' : 'Pourquoi CH Accessoires ?'}
             </h2>
           </div>
 
@@ -563,7 +563,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
           <div style={{ width: '48px', height: '0.5px', background: '#C9A84C', margin: '0 auto 36px', opacity: 0.8 }} />
 
           <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px', opacity: 0.9 }}>
-            {estArabe ? 'اطلبي الآن' : 'Commander maintenant'}
+            {estArabe ? 'طلبي دروك' : 'Commander maintenant'}
           </p>
 
           <h2 style={{ fontFamily: fd, fontSize: estArabe ? '38px' : '48px', fontWeight: estArabe ? 400 : 300, fontStyle: estArabe ? 'normal' : 'italic', letterSpacing: estArabe ? 0 : '0.02em', color: '#FAFAF7', marginBottom: '16px', lineHeight: 1.2 }}>

@@ -69,7 +69,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
     if (!champs.nom_complet.trim())
       e.nom_complet = estArabe ? 'الاسم الكامل مطلوب' : 'Nom obligatoire'
     if (!REGEX_TEL.test(champs.telephone))
-      e.telephone = estArabe ? 'رقم الهاتف غير صحيح' : 'Format invalide (05/06/07XXXXXXXX)'
+      e.telephone = estArabe ? 'رقم التيليفون ماشي صحيح' : 'Format invalide (05/06/07XXXXXXXX)'
     if (!champs.wilaya)
       e.wilaya = estArabe ? 'الولاية مطلوبة' : 'Wilaya obligatoire'
     if (champs.type_livraison === 'domicile' && !champs.adresse.trim())
@@ -111,7 +111,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
       })
       const json = await res.json()
       if (!json.success) {
-        setErreurGlobale(json.error || (estArabe ? 'حدث خطأ' : 'Une erreur est survenue.'))
+        setErreurGlobale(json.error || (estArabe ? 'وقع خطأ' : 'Une erreur est survenue.'))
         setEnvoi(false); return
       }
       // Lead Pixel : commande soumise (COD non confirmée)
@@ -119,28 +119,28 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
       trackLead({ eventId: eventIdAchat, commandeNumero: json.data.numero, montant: prix, quantite: 1, varianteId: variante.id })
       router.push(`/commande/confirmation?numero=${json.data.numero}&id=${json.data.id}&event_id=${eventIdAchat}`)
     } catch {
-      setErreurGlobale(estArabe ? 'خطأ في الاتصال' : 'Erreur de connexion.')
+      setErreurGlobale(estArabe ? 'مشكل في الاتصال' : 'Erreur de connexion.')
       setEnvoi(false)
     }
   }
 
   const T = {
-    titre:     estArabe ? 'أكمل طلبك الآن' : 'Finaliser ma commande',
-    sous:      estArabe ? 'دفع عند الاستلام — بدون بطاقة' : 'Paiement à la livraison — sans carte',
+    titre:     estArabe ? 'كمل طلبك دروك' : 'Finaliser ma commande',
+    sous:      estArabe ? 'دفع عند الاستلام — بلا بطاقة' : 'Paiement à la livraison — sans carte',
     nom:       estArabe ? 'الاسم الكامل' : 'Nom complet',
-    tel:       estArabe ? 'رقم الهاتف' : 'Téléphone',
+    tel:       estArabe ? 'رقم التيليفون' : 'Téléphone',
     wilaya:    estArabe ? 'الولاية' : 'Wilaya',
-    livraison: estArabe ? 'طريقة التوصيل' : 'Mode de livraison',
-    domicile:  estArabe ? 'إلى المنزل' : 'À domicile',
+    livraison: estArabe ? 'طريقة الليفراج' : 'Mode de livraison',
+    domicile:  estArabe ? 'لعند الدار' : 'À domicile',
     bureau:    estArabe ? 'مكتب البريد' : 'Bureau de poste',
     adresse:   estArabe ? 'العنوان' : 'Adresse',
-    phAdresse: estArabe ? 'حي، بناية، رقم...' : 'Cité, bâtiment, appartement...',
+    phAdresse: estArabe ? 'حي، عمارة، رقم...' : 'Cité, bâtiment, appartement...',
     message:   estArabe ? 'رسالة هدية (اختياري)' : 'Message cadeau (optionnel)',
     phMsg:     estArabe ? 'رسالتك هنا...' : 'Votre message ici...',
-    coloris:   estArabe ? 'اختار اللون' : 'Choisir le coloris',
-    total:     estArabe ? 'المبلغ الإجمالي' : 'Total',
-    loading:   estArabe ? 'جاري الإرسال...' : 'Envoi...',
-    secure:    estArabe ? 'لا دفع مسبق · تدفع عند استلامك' : 'Aucun paiement maintenant · Vous payez à la réception',
+    coloris:   estArabe ? 'اختاري اللون' : 'Choisir le coloris',
+    total:     estArabe ? 'المبلغ الكلي' : 'Total',
+    loading:   estArabe ? 'راه يتبعث...' : 'Envoi...',
+    secure:    estArabe ? 'ما كاين دفع مسبق · تدفع وقت الاستلام' : 'Aucun paiement maintenant · Vous payez à la réception',
   }
 
   /* ── Styles réutilisables ── */
@@ -181,7 +181,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
           letterSpacing: estArabe ? 0 : '0.22em', textTransform: estArabe ? 'none' : 'uppercase',
           color: '#C9A84C', marginBottom: '10px',
         }}>
-          {estArabe ? 'اطلب الآن' : 'Commander maintenant'}
+          {estArabe ? 'طلب دروك' : 'Commander maintenant'}
         </p>
         <h3 style={{
           fontFamily: fd, fontSize: estArabe ? '28px' : '28px',
@@ -352,7 +352,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
               color: afficherMessage ? 'rgba(201,168,76,0.9)' : 'rgba(201,168,76,0.55)',
               transition: 'color 0.15s ease',
             }}>
-              {estArabe ? 'إضافة رسالة هدية (اختياري)' : 'Ajouter un message cadeau (optionnel)'}
+              {estArabe ? 'زيد رسالة هدية (اختياري)' : 'Ajouter un message cadeau (optionnel)'}
             </span>
           </button>
           {afficherMessage && (
@@ -447,7 +447,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
             <><span className="spinner" />{T.loading}</>
           ) : estArabe ? (
             /* dir="ltr" sur le prix pour éviter l'inversion "DA 500 2" en RTL */
-            <>أريد هذه الحقيبة — <span dir="ltr">2 500 DA</span></>
+            <>نبغيها — <span dir="ltr">2 500 DA</span></>
           ) : (
             'Je veux ce sac — 2 500 DA'
           )}

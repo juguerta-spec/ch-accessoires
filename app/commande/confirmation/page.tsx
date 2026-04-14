@@ -58,28 +58,28 @@ function ConfirmationContenu() {
   // Message WhatsApp client pré-rempli
   const messageClient = encodeURIComponent(
     estArabe
-      ? `مرحباً، أكدت طلبي برقم ${numero}. هل يمكنكم تأكيد وقت التوصيل؟`
+      ? `السلام، كملت طلبي برقم ${numero}. واش تقدرو تأكدوا لي وقت الليفراج؟`
       : `Bonjour, j'ai passé la commande n°${numero}. Pouvez-vous confirmer le délai de livraison ?`
   )
 
   const T = {
-    titre:      estArabe ? 'تم تأكيد طلبك!' : 'Commande confirmée !',
+    titre:      estArabe ? 'تأكد طلبك!' : 'Commande confirmée !',
     sousTitre:  estArabe
-      ? 'شكراً لثقتك في CH Accessoires'
+      ? 'شكراً على ثقتك في CH Accessoires'
       : 'Merci pour votre confiance',
-    numeroLabel: estArabe ? 'رقم الطلبية' : 'Votre numéro de commande',
-    etape1titre: estArabe ? 'نتصل بك للتأكيد' : 'On vous appelle pour confirmer',
-    etape1sous:  estArabe ? 'فريقنا سيتصل بك خلال 24 ساعة' : 'Notre équipe vous contacte sous 24h',
-    etape2titre: estArabe ? 'التوصيل إلى باب بيتك' : 'Livraison à votre porte',
+    numeroLabel: estArabe ? 'رقم الطلبية ديالك' : 'Votre numéro de commande',
+    etape1titre: estArabe ? 'غادي نتصلو بيك للتأكيد' : 'On vous appelle pour confirmer',
+    etape1sous:  estArabe ? 'الفريق ديالنا غادي يتصل بك في 24 ساعة' : 'Notre équipe vous contacte sous 24h',
+    etape2titre: estArabe ? 'الليفراج لبابك' : 'Livraison à votre porte',
     etape2sous:  estArabe
-      ? 'التوصيل في 58 ولاية جزائرية · 1 إلى 5 أيام'
+      ? 'الليفراج في 58 ولاية · 1 إلى 5 أيام'
       : 'Livraison dans les 58 wilayas · 1 à 5 jours',
     etape3titre: estArabe ? 'الدفع عند الاستلام' : 'Vous payez à la livraison',
     etape3sous:  estArabe
-      ? 'افحص طلبك أمام الموزع قبل الدفع'
+      ? 'افحص طلبك قدام الموزع قبل ما تدفع'
       : 'Vérifiez votre colis devant le livreur avant de payer',
-    whatsappBtn: estArabe ? 'تواصل معنا على WhatsApp' : 'Nous contacter sur WhatsApp',
-    retour:      estArabe ? 'العودة إلى المتجر' : 'Retour à la boutique',
+    whatsappBtn: estArabe ? 'تواصلو معانا على WhatsApp' : 'Nous contacter sur WhatsApp',
+    retour:      estArabe ? 'الرجوع للمتجر' : 'Retour à la boutique',
   }
 
   const font = estArabe ? 'var(--font-arabic)' : undefined

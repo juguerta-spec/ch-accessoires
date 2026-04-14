@@ -91,29 +91,29 @@ const TEXTES = {
     footerDroits: '© 2026 CH Accessoires. Tous droits réservés.',
   },
   ar: {
-    urgence: '🚚 التوصيل في جميع أنحاء الجزائر · ⚡ كميات محدودة',
-    navCollection: 'المجموعة',
-    navContact: 'تواصل',
+    urgence: '🚚 الليفراج لقاع ولايات الجزائر · ⚡ الكمية محدودة',
+    navCollection: 'الكوليكسيون',
+    navContact: 'تواصلو معانا',
     heroSurtitle: 'موسم 2025',
-    heroTitre: 'الأناقة التي\nتعكس شخصيتك',
-    heroSous: 'حقائب فاخرة · مصممة للاستمرار · تُوصَّل إلى باب بيتك',
-    heroBtn: 'اكتشف المجموعة',
-    collectionTitre: 'مجموعتنا',
-    collectionSous: 'كل قطعة مصممة لترافقك في حياتك اليومية بأناقة تامة.',
-    decouvrir: 'اكتشف',
+    heroTitre: 'الإيلغانس اللي\nتعكس شخصيتك',
+    heroSous: 'شنط فاخرة · مصنوعة تبقى · تيجي لبابك',
+    heroBtn: 'شوف الكوليكسيون',
+    collectionTitre: 'كوليكسيوننا',
+    collectionSous: 'كل قطعة مصنوعة تصحبك في حياتك اليومية بأناقة.',
+    decouvrir: 'شوف',
     couleurs: 'ألوان متاحة',
     unColoris: 'لون متاح',
     prix: '2 500 دج',
     paiementLivraison: 'الدفع عند الاستلام',
-    valeursTitre: 'لماذا CH Accessoires',
-    v1titre: 'جودة فاخرة',
-    v1sous: 'مواد مختارة بعناية وتشطيبات متقنة. كل حقيبة مصممة لتدوم.',
-    v2titre: 'توصيل وطني',
-    v2sous: 'التوصيل في 58 ولاية جزائرية. سريع وموثوق ومتابَع.',
+    valeursTitre: 'علاش CH Accessoires',
+    v1titre: 'جودة عالية',
+    v1sous: 'خامات مختارة وتشطيبات أنيقة. كل شنطة مصنوعة تبقى معاك.',
+    v2titre: 'ليفراج وطني',
+    v2sous: 'الليفراج لـ 58 ولاية. بالدرة وموثوق.',
     v3titre: 'الدفع عند الاستلام',
-    v3sous: 'اطلب بثقة. لا تدفع إلا عند استلام طلبك.',
+    v3sous: 'طلب بثقة. ما تدفعش غير وقت تستلم.',
     footerTagline: 'الأناقة في متناول الجميع.',
-    footerLivraison: 'التوصيل في جميع أنحاء الجزائر',
+    footerLivraison: 'الليفراج لقاع الجزائر',
     footerPaiement: 'الدفع عند الاستلام',
     footerDroits: '© 2026 CH Accessoires. جميع الحقوق محفوظة.',
   },
@@ -389,7 +389,7 @@ export default function HomeClient({ produits }: Props) {
               border: 'var(--ch-border)',
             }}
           >
-            {estArabe ? 'المنتجات قادمة قريباً...' : 'Collection bientôt disponible…'}
+            {estArabe ? 'الشنط جاية قريب...' : 'Collection bientôt disponible…'}
           </div>
         ) : (
           <div
@@ -706,7 +706,7 @@ function CarteProducte({ produit, estArabe, T }: CarteProps) {
                 padding: '4px 10px',
               }}
             >
-              {estArabe ? 'جديد' : 'Nouveau'}
+              {estArabe ? 'جديدة' : 'Nouveau'}
             </div>
           )}
         </div>

@@ -23,11 +23,11 @@ export default function WhatsAppFloat() {
 
   const message = encodeURIComponent(
     estArabe
-      ? 'مرحباً، أريد الاستفسار عن منتجاتكم'
+      ? 'السلام، نبغي نسقسي على منتجاتكم'
       : 'Bonjour, je souhaite me renseigner sur vos produits'
   )
 
-  const label = estArabe ? 'تواصل معنا' : 'Nous contacter'
+  const label = estArabe ? 'تواصلو معانا' : 'Nous contacter'
 
   return (
     <>

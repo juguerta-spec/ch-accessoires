@@ -13,7 +13,7 @@ export default function UrgencyBanner() {
   return (
     <div className="urgency-bar">
       {estArabe
-        ? '🚚 التوصيل إلى جميع ولايات الجزائر\u00a0·\u00a0⚡ المخزون محدود'
+        ? '🚚 الليفراج لقاع ولايات الجزائر\u00a0·\u00a0⚡ الكمية محدودة'
         : '🚚 Livraison dans toute l\'Algérie\u00a0·\u00a0⚡ Stock limité'}
     </div>
   )
