@@ -355,7 +355,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
               background: 'rgba(201,168,76,0.08)',
               border: '0.5px solid rgba(201,168,76,0.22)',
               padding: '5px 12px',
-              marginBottom: '20px',
+              marginBottom: '28px',
             }}>
               <span style={{
                 width: '6px', height: '6px', borderRadius: '50%',
@@ -371,17 +371,35 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
             </div>
           )}
 
-          {/* Description */}
-          {description && (
-            <p style={{ fontFamily: fa, fontSize: estArabe ? '19px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.6)', lineHeight: 1.85, marginBottom: '34px', maxWidth: '420px' }}>
-              {description}
-            </p>
-          )}
+          {/* ── Formulaire COD — remonté directement après le prix ── */}
+          {/* ref pour masquer le CTA sticky quand le form est visible */}
+          <div ref={formWrapRef}>
+            <OrderForm
+              variante={varianteActive}
+              variantes={variantes}
+              onVarianteChange={setVarianteActive}
+              prix={produit.prix}
+            />
+          </div>
 
-          {/* Séparateur or */}
-          <div style={{ borderTop: '0.5px solid rgba(201,168,76,0.18)', marginBottom: '34px' }} />
+          {/* ── Bannière garanties — réassurance post-formulaire ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '1px',
+            background: 'rgba(201,168,76,0.18)',
+            margin: '32px 0',
+          }}>
+            {garanties.map((g, i) => (
+              <div key={i} style={{ background: '#111', padding: '18px 8px', textAlign: 'center' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>{g.ico}</div>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '12px' : '9.5px', fontWeight: 600, color: '#FAFAF7', letterSpacing: estArabe ? 0 : '0.06em', textTransform: estArabe ? 'none' : 'uppercase', lineHeight: 1.3, marginBottom: '3px' }}>{g.t}</p>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '11px' : '10px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.4 }}>{g.c}</p>
+              </div>
+            ))}
+          </div>
 
-          {/* ── Comment ça marche — 3 étapes avant le formulaire ── */}
+          {/* ── Comment ça marche — réassurance post-formulaire ── */}
           <div style={{ marginBottom: '32px' }}>
             <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.2em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(201,168,76,0.6)', marginBottom: '16px' }}>
               {estArabe ? 'كيفاش يعمل هذا' : 'Comment ça marche'}
@@ -411,32 +429,12 @@ export default function LandingPageClient({ produit, variantes, commandesToday }
             </div>
           </div>
 
-          {/* ── Bannière garanties — 3 piliers ── */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1px',
-            background: 'rgba(201,168,76,0.18)',
-            marginBottom: '32px',
-          }}>
-            {garanties.map((g, i) => (
-              <div key={i} style={{ background: '#111', padding: '18px 8px', textAlign: 'center' }}>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>{g.ico}</div>
-                <p style={{ fontFamily: fa, fontSize: estArabe ? '12px' : '9.5px', fontWeight: 600, color: '#FAFAF7', letterSpacing: estArabe ? 0 : '0.06em', textTransform: estArabe ? 'none' : 'uppercase', lineHeight: 1.3, marginBottom: '3px' }}>{g.t}</p>
-                <p style={{ fontFamily: fa, fontSize: estArabe ? '11px' : '10px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.4 }}>{g.c}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* Formulaire COD — ref pour masquer le CTA sticky */}
-          <div ref={formWrapRef}>
-            <OrderForm
-              variante={varianteActive}
-              variantes={variantes}
-              onVarianteChange={setVarianteActive}
-              prix={produit.prix}
-            />
-          </div>
+          {/* Description produit — info complémentaire sous le formulaire */}
+          {description && (
+            <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '13px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.85, marginBottom: '32px', maxWidth: '420px', borderTop: '0.5px solid rgba(201,168,76,0.1)', paddingTop: '24px' }}>
+              {description}
+            </p>
+          )}
 
         </div>
       </div>
