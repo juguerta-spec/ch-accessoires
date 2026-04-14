@@ -73,7 +73,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
     if (!champs.wilaya)
       e.wilaya = estArabe ? 'الولاية مطلوبة' : 'Wilaya obligatoire'
     if (champs.type_livraison === 'domicile' && !champs.adresse.trim())
-      e.adresse = estArabe ? 'العنوان مطلوب' : 'Adresse requise'
+      e.adresse = estArabe ? 'المدينة مطلوبة' : 'Ville requise'
     setErreurs(e)
     return Object.keys(e).length === 0
   }
@@ -133,8 +133,8 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
     livraison: estArabe ? 'طريقة الليفراج' : 'Mode de livraison',
     domicile:  estArabe ? 'لعند الدار' : 'À domicile',
     bureau:    estArabe ? 'مكتب البريد' : 'Bureau de poste',
-    adresse:   estArabe ? 'العنوان' : 'Adresse',
-    phAdresse: estArabe ? 'حي، عمارة، رقم...' : 'Cité, bâtiment, appartement...',
+    adresse:   estArabe ? 'المدينة / الحي' : 'Ville',
+    phAdresse: estArabe ? 'مثال: باب الوادي، بئر مراد رايس...' : 'Ex : Kouba, Bab El Oued, Ben Aknoun...',
     message:   estArabe ? 'رسالة هدية (اختياري)' : 'Message cadeau (optionnel)',
     phMsg:     estArabe ? 'رسالتك هنا...' : 'Votre message ici...',
     coloris:   estArabe ? 'اختاري اللون' : 'Choisir le coloris',
@@ -305,17 +305,18 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix 
           </div>
         </div>
 
-        {/* ── Adresse (si domicile) ── */}
+        {/* ── Ville (si domicile) — lieu approximatif suffit ── */}
         {champs.type_livraison === 'domicile' && (
           <div style={{ marginBottom: '28px' }}>
             <label style={labelSt}>{T.adresse}</label>
-            <textarea
+            <input
+              type="text"
               className="form-input"
               value={champs.adresse}
               onChange={e => maj('adresse', e.target.value)}
               placeholder={T.phAdresse}
-              rows={2}
-              style={{ ...inputSt, resize: 'none' }}
+              autoComplete="address-level2"
+              style={inputSt}
             />
             {erreurs.adresse && <ErrMsg msg={erreurs.adresse} />}
           </div>
