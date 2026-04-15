@@ -21,19 +21,19 @@ import LanguageToggle from '@/components/store/LanguageToggle'
 import ExitIntentPopup from '@/components/store/ExitIntentPopup'
 
 const FAQ_FR = [
-  { q: 'Quel est le délai de livraison ?', r: "Livraison offerte sous 1 à 3 jours dans les 69 wilayas. Vous retirez votre colis au bureau CH Accessoires de votre wilaya." },
-  { q: 'Comment fonctionne le paiement ?', r: "Vous payez uniquement à la réception. Aucune carte bancaire requise — paiement Cash on Delivery (COD) uniquement." },
-  { q: 'Puis-je vérifier le produit avant de payer ?', r: "Oui, absolument. Inspectez votre colis devant le livreur avant de régler. C'est votre droit." },
-  { q: 'Le sac existe en d\'autres tailles ?', r: "Le Sac Premium CH Accessoires est en taille unique standard, conçue pour un usage quotidien polyvalent et élégant." },
-  { q: 'Comment choisir le coloris ?', r: "Le Noir est intemporel et polyvalent. Le Burgundy est profond et élégant — parfait pour se démarquer." },
+  { q: 'Sous combien de jours vais-je recevoir ma commande ?', r: "Livraison offerte sous 1 à 3 jours dans les 69 wilayas. Vous retirez votre colis au bureau CH Accessoires de votre wilaya. Notre équipe vous contacte avant la livraison pour confirmer." },
+  { q: 'Je n\'ai pas de carte bancaire — comment je paye ?', r: "Aucune carte requise. Vous payez en espèces uniquement à la réception de votre colis — Cash on Delivery (COD). Zéro risque, zéro engagement à l'avance." },
+  { q: 'Est-ce que je peux refuser le colis si je ne suis pas satisfait ?', r: "Oui. Ouvrez le colis devant le livreur, inspectez le produit. Si vous n'êtes pas satisfait, vous le refusez et ne payez rien. C'est votre droit absolu." },
+  { q: 'La qualité est vraiment premium pour ce prix ?', r: "Absolument. Cuir synthétique haut de gamme, coutures renforcées, doublure robuste. Nous avons volontairement limité nos marges pour rendre l'accessoire luxe accessible. Jugez par vous-même à la réception — vous ne serez pas déçu." },
+  { q: 'Puis-je commander les 2 coloris en même temps ?', r: "Oui ! Sélectionnez l'option « 2 Sacs » dans le formulaire pour recevoir le Noir et le Burgundy ensemble au prix de 6 000 DA — économie de 1 000 DA et livraison offerte incluse." },
 ]
 
 const FAQ_AR = [
-  { q: 'قداش يأخذ التوصيل؟', r: "التوصيل مجاني ويأخذ 1 إلى 3 أيام في قاع الـ 69 ولاية. تمشي تاخذ الطلب من البيرو في ولايتك." },
-  { q: 'كيفاش يتم الدفع؟', r: "تدفع غير وقت تستلم طلبك. ما كاين بطاقة — الدفع عند الاستلام (COD) غير." },
-  { q: 'واش نقدر نفحص المنتج قبل ما ندفع؟', r: "آه، بالطبع. افحص طلبك قدام الموزع قبل ما تدفع. هذا حقك." },
-  { q: 'واش الشنطة متوفرة بأحجام أخرى؟', r: "شنطة CH Signature متوفرة بحجم قياسي واحد، مصنوعة للاستعمال اليومي الأنيق." },
-  { q: 'كيفاش نختار اللون؟', r: "الكحل كلاسيكي وعملي. البورغاندي عميق وأنيق — مثالي باش تتميزي." },
+  { q: 'قداش يأخذ التوصيل ووصلي طلبي؟', r: "التوصيل مجاني ويأخذ 1 إلى 3 أيام في قاع الـ 69 ولاية. تمشي تاخذ الطلب من البيرو في ولايتك. الفريق ديالنا يتصل بك قبل التسليم للتأكيد." },
+  { q: 'ما عنديش بطاقة — كيفاش ندفع؟', r: "ما كاين بطاقة ولا دفع عبر النت. تدفع بالكاش غير وقت تستلم طلبك. ما كاين مخاطرة — ما تلتزميش بحتة قبل ما تشوفي المنتج." },
+  { q: 'واش نقدر نرد الشنطة إذا ما عجبتنيش؟', r: "آه، بالطبع. افتحي الطلب قدام الموزع وافحصيه. إذا ما عجبكيش، ترديه مباشرة وما تدفعيش ولا دينار. هذا حقك." },
+  { q: 'واش الجودة حقيقية بهذا الثمن؟', r: "آه. جلد صناعي هاي-إند، خياطة محكمة، بطانة متينة. خفضنا الهامش ديالنا عشان الجودة تكون في المتناول. حكمي بنفسك وقت ما تستلمي — ما تتحسريش." },
+  { q: 'واش نقدر نطلب الشنطتين مع بعض؟', r: "آه! اختاري خيار « شنطتين » في الفورم وتاخذي الكحل والبورغاندي معاً بـ 6000 دج — توفير 1000 دج والتوصيل مجاني مشمول." },
 ]
 
 function FaqItem({ q, r, open, onToggle, isAr }: { q: string; r: string; open: boolean; onToggle: () => void; isAr: boolean }) {
@@ -158,17 +158,17 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
   const fd = estArabe ? 'var(--font-arabic)' : 'var(--font-display)'
 
   const WHY = estArabe ? [
-    { n: '01', t: 'جودة فاخرة', c: 'جلد صناعي هاي-إند وبطانة متينة تبقى مدة طويلة. كل تفصيلة مختارة بعناية.' },
-    { n: '02', t: 'ثمن في المتناول', c: 'الفاخر بـ 3500 دج. جودة عالية بثمن عادل — بلا تنازل.' },
-    { n: '03', t: 'توصيل مجاني وسريع', c: '1–3 أيام في الـ 69 ولاية. تاخذ الطلب من البيرو في ولايتك.' },
-    { n: '04', t: 'راضٍ أو مسترد', c: 'افحص طلبك قدام الموزع قبل ما تدفع. رضاك الأولوية.' },
-    { n: '05', t: 'هدية مثالية', c: 'تغليف أنيق وبطاقة هدية مخصصة عند الطلب. لحظة ما تنساهاش.' },
+    { n: '01', t: 'شنطة تبقى معاك', c: 'جلد صناعي هاي-إند، خياطة محكمة، بطانة متينة. ما تخسريش فلوسك في شنطة تتلف بسرعة.' },
+    { n: '02', t: '3 500 دج، ولا زيادة', c: 'ثمن ثابت وواضح بلا مفاجآت. الجودة العالية ما لازمش تكون غالية — هذا مبدأنا.' },
+    { n: '03', t: 'التوصيل مجاني لولايتك', c: '69 ولاية، 1 إلى 3 أيام. ما تدفعيش ولا دينار على التوصيل — مجاني دايما.' },
+    { n: '04', t: 'افحصي قبل ما تدفعي', c: 'ما كاين التزام قبل ما تستلمي. افتحي الطلب قدام الموزع. ما عجبكيش؟ ترديه.' },
+    { n: '05', t: 'الهدية اللي ما تنساهاش', c: 'تغليف أنيق وكارطة مخصصة متوفرة عند الطلب. مثالية للمناسبات اللي تهم.' },
   ] : [
-    { n: '01', t: 'Qualité premium', c: 'Cuir synthétique haut de gamme, doublure robuste. Chaque détail est pensé pour durer.' },
-    { n: '02', t: 'Prix accessible', c: 'Le luxe à 3 500 DA — sans compromis sur la qualité ni le style.' },
-    { n: '03', t: 'Livraison offerte', c: 'Livraison gratuite en 1–3 jours dans les 69 wilayas. Retrait au bureau CH Accessoires de votre wilaya.' },
-    { n: '04', t: 'Vérifiez avant de payer', c: 'Inspectez votre colis devant le livreur. Vous payez seulement si vous êtes satisfait.' },
-    { n: '05', t: 'Le cadeau parfait', c: 'Emballage soigné et message personnalisé disponibles sur demande.' },
+    { n: '01', t: 'Un sac qui dure', c: 'Cuir synthétique haut de gamme, coutures renforcées, doublure robuste. Vous ne regretterez pas votre choix.' },
+    { n: '02', t: '3 500 DA — prix fixe, sans surprise', c: 'Aucune majoration cachée, aucun frais à la livraison. La qualité premium n\'a pas besoin d\'être hors de prix.' },
+    { n: '03', t: 'Livraison offerte dans toute l\'Algérie', c: '69 wilayas couvertes, livraison en 1 à 3 jours. Zéro frais de port — c\'est compris dans votre commande.' },
+    { n: '04', t: 'Vous vérifiez, vous payez', c: 'Aucun engagement avant réception. Ouvrez le colis devant le livreur. Si vous n\'êtes pas satisfait, vous refusez — point.' },
+    { n: '05', t: 'Le cadeau qu\'elle n\'oublie pas', c: 'Emballage soigné et carte personnalisée disponibles. Idéal pour les occasions qui comptent vraiment.' },
   ]
 
   const etapesCM = estArabe ? [
@@ -211,6 +211,11 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           transition: transform 0.3s ease, opacity 0.3s ease;
         }
         @media(min-width: 768px){ .sticky-cta-bar { display: none !important; } }
+        /* Sur mobile : masquer color selector + livraison strip (présents dans le formulaire) */
+        @media(max-width: 767px){
+          .above-form-color { display: none; }
+          .livraison-strip   { display: none !important; }
+        }
         @keyframes pulse-dot {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.4; }
@@ -308,11 +313,6 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
         {/* Colonne infos + formulaire — fond noir */}
         <div className="info-panel" ref={formRef} style={{ background: '#0A0A0A' }}>
 
-          {/* Tag collection */}
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px' }}>
-            {estArabe ? 'كوليكسيون 2025' : 'Collection 2025'}
-          </p>
-
           {/* Nom produit */}
           <h1 style={{
             fontFamily: fd,
@@ -326,31 +326,23 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             {nomProduit}
           </h1>
 
-          {/* Coloris actif */}
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '15px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.45)', marginBottom: '26px' }}>
-            {estArabe ? varianteActive.couleur_ar : varianteActive.couleur_fr}
-          </p>
-
-          {/* Sélecteur coloris */}
-          <div style={{ marginBottom: '10px' }}>
-            <ColorSelector variantes={variantes} varianteActive={varianteActive} onChange={setVarianteActive} fondSombre />
+          {/* Sélecteur coloris + stock — masqué sur mobile (redondant avec le formulaire) */}
+          <div className="above-form-color">
+            <div style={{ marginBottom: '10px' }}>
+              <ColorSelector variantes={variantes} varianteActive={varianteActive} onChange={setVarianteActive} fondSombre />
+            </div>
+            <p style={{
+              fontFamily: fa, fontSize: estArabe ? '14px' : '13px', fontWeight: 400,
+              color: varianteActive.stock <= 10 ? '#E88080' : 'rgba(201,168,76,0.55)',
+              letterSpacing: estArabe ? 0 : '0.06em', marginBottom: '28px',
+            }}>
+              {varianteActive.stock <= 0
+                ? (estArabe ? 'مش متوفر دروك' : 'Rupture de stock')
+                : varianteActive.stock <= 10
+                  ? (estArabe ? `${varianteActive.stock} قطع بقاو غير — طلبي دروك` : `Seulement ${varianteActive.stock} pièce(s) — Commandez vite`)
+                  : (estArabe ? `${varianteActive.stock} قطعة متوفرة` : `${varianteActive.stock} pièces disponibles`)}
+            </p>
           </div>
-
-          {/* Stock count — toujours visible sous le sélecteur */}
-          <p style={{
-            fontFamily: fa,
-            fontSize: estArabe ? '14px' : '13px',
-            fontWeight: 400,
-            color: varianteActive.stock <= 10 ? '#E88080' : 'rgba(201,168,76,0.55)',
-            letterSpacing: estArabe ? 0 : '0.06em',
-            marginBottom: '28px',
-          }}>
-            {varianteActive.stock <= 0
-              ? (estArabe ? 'مش متوفر دروك' : 'Rupture de stock')
-              : varianteActive.stock <= 10
-                ? (estArabe ? `${varianteActive.stock} قطع بقاو غير — طلبي دروك` : `Seulement ${varianteActive.stock} pièce(s) disponible(s) — Commandez vite`)
-                : (estArabe ? `${varianteActive.stock} قطعة متوفرة` : `${varianteActive.stock} pièces disponibles`)}
-          </p>
 
           {/* Séparateur or */}
           <div style={{ borderTop: '0.5px solid rgba(201,168,76,0.18)', marginBottom: '26px' }} />
@@ -366,8 +358,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             </span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(201,168,76,0.5)' }}>DA</span>
           </div>
-          {/* ── Strip livraison offerte — mise en valeur principale ── */}
-          <div style={{
+          {/* ── Strip livraison offerte — masquée sur mobile (dans le formulaire en dessous) ── */}
+          <div className="livraison-strip" style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
             border: '0.5px solid rgba(201,168,76,0.3)',
@@ -391,28 +383,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             ))}
           </div>
 
-          {/* Badge social proof — commandes du jour */}
-          {commandesToday > 0 && (
-            <div style={{
-              display: 'inline-flex', alignItems: 'center', gap: '7px',
-              background: 'rgba(201,168,76,0.08)',
-              border: '0.5px solid rgba(201,168,76,0.22)',
-              padding: '5px 12px',
-              marginBottom: '28px',
-            }}>
-              <span style={{
-                width: '6px', height: '6px', borderRadius: '50%',
-                background: '#C9A84C', display: 'inline-block',
-                animation: 'pulse-dot 2s infinite',
-                flexShrink: 0,
-              }} />
-              <span style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 400, color: 'rgba(201,168,76,0.8)', letterSpacing: estArabe ? 0 : '0.05em' }}>
-                {estArabe
-                  ? `${commandesToday} شخص طلبوا اليوم`
-                  : `${commandesToday} personnes ont commandé aujourd'hui`}
-              </span>
-            </div>
-          )}
+          {/* Badge social proof déplacé dans l'en-tête du formulaire via prop commandesToday */}
 
           {/* ── Blocs réutilisables selon la variante A/B ── */}
           {/* Formulaire COD (ref pour masquer le CTA sticky quand visible) */}
@@ -425,6 +396,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
                   onVarianteChange={setVarianteActive}
                   prix={produit.prix}
                   abVariant={abVariant}
+                  commandesToday={commandesToday}
                 />
               </div>
             )
@@ -487,20 +459,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
               </p>
             ) : null
 
-            // Variante A : formulaire EN HAUT (directement après le prix)
-            // Variante B : formulaire EN BAS (après description + comment ça marche)
-            if (abVariant === 'B') {
-              return (
-                <>
-                  {blocGaranties}
-                  {blocCommentCaMarche}
-                  {blocDescription}
-                  {blocFormulaire}
-                </>
-              )
-            }
-
-            // Variante A (défaut)
+            // Formulaire toujours en premier — form le plus haut possible
             return (
               <>
                 {blocFormulaire}
@@ -640,37 +599,41 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           </p>
 
           <h2 style={{ fontFamily: fd, fontSize: estArabe ? '38px' : '48px', fontWeight: estArabe ? 400 : 300, fontStyle: estArabe ? 'normal' : 'italic', letterSpacing: estArabe ? 0 : '0.02em', color: '#FAFAF7', marginBottom: '16px', lineHeight: 1.2 }}>
-            {estArabe ? 'أضيفي اللمسة الأنيقة لإطلالتك' : "L'élégance qui vous ressemble"}
+            {estArabe ? 'قدّري راسك — اختاري شنطتك' : 'Votre sac vous attend.'}
           </h2>
 
           <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '16px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginBottom: '48px', lineHeight: 1.8, letterSpacing: estArabe ? 0 : '0.03em' }}>
-            {estArabe ? `${produit.prix.toLocaleString('fr-DZ')} دج — دفع عند الاستلام — توصيل لجميع الولايات` : `${produit.prix.toLocaleString('fr-DZ')} DA · Paiement à la livraison · Livraison dans toute l'Algérie`}
+            {estArabe
+              ? `${produit.prix.toLocaleString('fr-DZ')} دج · التوصيل مجاني · الدفع عند الاستلام · راضية ولا مردودة`
+              : `${produit.prix.toLocaleString('fr-DZ')} DA · Livraison offerte · Paiement à la réception · Satisfait ou remboursé`}
           </p>
 
           <a
             href="#order-form"
             style={{
               display: 'block',
-              maxWidth: '360px',
+              maxWidth: '380px',
               margin: '0 auto',
               background: '#C9A84C',
               color: '#0A0A0A',
               fontFamily: fa,
-              fontSize: estArabe ? '20px' : '14px',
+              fontSize: estArabe ? '20px' : '13px',
               fontWeight: estArabe ? 600 : 700,
               letterSpacing: estArabe ? 0 : '0.18em',
               textTransform: estArabe ? 'none' : 'uppercase',
-              padding: '20px 40px',
+              padding: '22px 40px',
               textDecoration: 'none',
               textAlign: 'center',
               transition: 'background 0.15s ease',
             }}
           >
-            {estArabe ? <>اطلبي الآن — <span dir="ltr">{produit.prix.toLocaleString('fr-DZ')} DA</span></> : `Je veux ce sac — ${produit.prix.toLocaleString('fr-DZ')} DA`}
+            {estArabe
+              ? <>أطلبي دروك · التوصيل مجاني — <span dir="ltr">{produit.prix.toLocaleString('fr-DZ')} DA</span></>
+              : `Livraison offerte · Commander — ${produit.prix.toLocaleString('fr-DZ')} DA`}
           </a>
 
           <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', marginTop: '20px', letterSpacing: estArabe ? 0 : '0.04em' }}>
-            {estArabe ? 'لا دفع مسبق · تدفع عند الاستلام' : 'Aucun paiement maintenant · Vous payez à la réception'}
+            {estArabe ? 'ما كاين دفع مسبق · تدفع وقت الاستلام' : 'Aucun paiement maintenant · Vous payez à la réception'}
           </p>
         </div>
       </section>

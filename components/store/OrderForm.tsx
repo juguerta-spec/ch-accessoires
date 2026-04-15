@@ -20,6 +20,7 @@ type Props = {
   onVarianteChange: (v: Variante) => void
   prix: number
   abVariant?: 'A' | 'B'
+  commandesToday?: number
 }
 
 const REGEX_TEL = /^(05|06|07)[0-9]{8}$/
@@ -34,7 +35,7 @@ type Champs = {
 }
 type Erreurs = Partial<Record<keyof Champs, string>>
 
-export default function OrderForm({ variante, variantes, onVarianteChange, prix, abVariant = 'A' }: Props) {
+export default function OrderForm({ variante, variantes, onVarianteChange, prix, abVariant = 'A', commandesToday = 0 }: Props) {
   const { estArabe } = useLanguage()
   const router = useRouter()
   const fa = estArabe ? 'var(--font-arabic)' : 'var(--font-body)'
@@ -133,8 +134,8 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
   }
 
   const T = {
-    titre:     estArabe ? 'كمل طلبك دروك' : 'Finaliser ma commande',
-    sous:      estArabe ? 'دفع عند الاستلام' : 'Paiement à la livraison',
+    titre:     estArabe ? 'أكملي طلبك' : 'Passez votre commande',
+    sous:      estArabe ? 'التوصيل مجاني · الدفع وقت الاستلام' : 'Livraison offerte · Paiement à la réception',
     nom:       estArabe ? 'الاسم الكامل' : 'Nom complet',
     tel:       estArabe ? 'رقم التيليفون' : 'Téléphone',
     wilaya:    estArabe ? 'الولاية' : 'Wilaya',
@@ -190,7 +191,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           {estArabe ? 'طلب دروك' : 'Commander maintenant'}
         </p>
         <h3 style={{
-          fontFamily: fd, fontSize: estArabe ? '28px' : '28px',
+          fontFamily: fd, fontSize: '28px',
           fontWeight: estArabe ? 500 : 300, letterSpacing: estArabe ? 0 : '0.04em',
           color: '#FAFAF7', marginBottom: '8px', lineHeight: 1.2,
         }}>
@@ -200,9 +201,30 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           fontFamily: fa, fontSize: estArabe ? '18px' : '15px',
           fontWeight: 300, color: 'rgba(201,168,76,0.7)',
           letterSpacing: estArabe ? 0 : '0.08em',
+          marginBottom: commandesToday > 0 ? '14px' : '0',
         }}>
           {T.sous}
         </p>
+        {/* Badge social proof — commandes du jour, passé depuis LandingPageClient */}
+        {commandesToday > 0 && (
+          <div style={{
+            display: 'inline-flex', alignItems: 'center', gap: '7px',
+            background: 'rgba(201,168,76,0.08)',
+            border: '0.5px solid rgba(201,168,76,0.22)',
+            padding: '5px 12px',
+          }}>
+            <span style={{
+              width: '6px', height: '6px', borderRadius: '50%',
+              background: '#C9A84C', display: 'inline-block',
+              animation: 'pulse-dot 2s infinite', flexShrink: 0,
+            }} />
+            <span style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 400, color: 'rgba(201,168,76,0.8)', letterSpacing: estArabe ? 0 : '0.05em' }}>
+              {estArabe
+                ? `${commandesToday} شخص طلبوا اليوم`
+                : `${commandesToday} personnes ont commandé aujourd'hui`}
+            </span>
+          </div>
+        )}
       </div>
 
       <style>{`
@@ -218,7 +240,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           <label style={labelSt}>{estArabe ? 'اختار عرضك' : 'Votre offre'}</label>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '4px' }}>
 
-            {/* Option Solo */}
+            {/* Option 1 Sac */}
             <button
               type="button"
               onClick={() => setPackDuo(false)}
@@ -231,18 +253,18 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
                 transition: 'all 0.15s ease',
               }}
             >
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.4)', marginBottom: '4px' }}>
-                {estArabe ? 'سولو' : 'Solo'}
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.06em', color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', marginBottom: '4px' }}>
+                {estArabe ? 'شنطة واحدة' : '1 Sac'}
               </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
-                {estArabe ? 'لون واحد' : '1 sac · 1 coloris'}
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '12px' : '10px', fontWeight: 300, color: 'rgba(201,168,76,0.55)', marginBottom: '8px', lineHeight: 1.4, letterSpacing: estArabe ? 0 : '0.04em' }}>
+                {estArabe ? 'التوصيل مجاني' : 'Livraison offerte'}
               </p>
               <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '20px', fontWeight: 500, color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', lineHeight: 1 }}>
                 {prix.toLocaleString('fr-DZ')} <span style={{ fontSize: '11px', fontWeight: 300 }}>DA</span>
               </p>
             </button>
 
-            {/* Option Pack Duo */}
+            {/* Option 2 Sacs */}
             <button
               type="button"
               onClick={() => setPackDuo(true)}
@@ -256,29 +278,21 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
                 position: 'relative',
               }}
             >
-              {/* Badge "Meilleure valeur" */}
+              {/* Badge popularité */}
               <span style={{
-                position: 'absolute',
-                top: '-10px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: '#C9A84C',
-                color: '#0A0A0A',
-                fontFamily: 'var(--font-body)',
-                fontSize: '8px',
-                fontWeight: 700,
-                letterSpacing: '0.12em',
-                textTransform: 'uppercase',
-                padding: '2px 8px',
-                whiteSpace: 'nowrap',
+                position: 'absolute', top: '-10px', left: '50%', transform: 'translateX(-50%)',
+                background: '#C9A84C', color: '#0A0A0A',
+                fontFamily: 'var(--font-body)', fontSize: '8px', fontWeight: 700,
+                letterSpacing: '0.14em', textTransform: 'uppercase',
+                padding: '2px 8px', whiteSpace: 'nowrap',
               }}>
-                {estArabe ? 'أحسن عرض' : 'Best value'}
+                {estArabe ? 'الأكثر طلباً' : 'POPULAIRE'}
               </span>
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.4)', marginBottom: '4px' }}>
-                {estArabe ? 'باك دو' : 'Pack Duo'}
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.06em', color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', marginBottom: '4px' }}>
+                {estArabe ? 'شنطتين' : '2 Sacs'}
               </p>
-              <p style={{ fontFamily: fa, fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
-                {estArabe ? 'كحل + برغاندي' : 'Noir + Burgundy'}
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '12px' : '10px', fontWeight: 300, color: 'rgba(201,168,76,0.55)', marginBottom: '8px', lineHeight: 1.4, letterSpacing: estArabe ? 0 : '0.04em' }}>
+                {estArabe ? 'كحل + برغاندي · مجاني' : 'Noir + Burgundy · Livraison offerte'}
               </p>
               <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '20px', fontWeight: 500, color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', lineHeight: 1 }}>
                 {PRIX_PACK.toLocaleString('fr-DZ')} <span style={{ fontSize: '11px', fontWeight: 300 }}>DA</span>
@@ -499,12 +513,12 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           ) : estArabe ? (
             /* dir="ltr" sur le prix pour éviter l'inversion "DA 500 2" en RTL */
             packDuo
-              ? <>نبغي الباك — <span dir="ltr">{PRIX_PACK.toLocaleString('fr-DZ')} DA</span></>
-              : <>نبغيها — <span dir="ltr">{prix.toLocaleString('fr-DZ')} DA</span></>
+              ? <>أطلب الشنطتين — التوصيل مجاني · <span dir="ltr">{PRIX_PACK.toLocaleString('fr-DZ')} DA</span></>
+              : <>أطلبي دروك — التوصيل مجاني · <span dir="ltr">{prix.toLocaleString('fr-DZ')} DA</span></>
           ) : (
             packDuo
-              ? `Commander le Pack Duo — ${PRIX_PACK.toLocaleString('fr-DZ')} DA`
-              : `Je veux ce sac — ${prix.toLocaleString('fr-DZ')} DA`
+              ? `Livraison offerte · 2 Sacs — ${PRIX_PACK.toLocaleString('fr-DZ')} DA`
+              : `Livraison offerte · Commander — ${prix.toLocaleString('fr-DZ')} DA`
           )}
         </button>
 
