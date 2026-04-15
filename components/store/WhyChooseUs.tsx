@@ -25,8 +25,8 @@ const POINTS_FR = [
   },
   {
     icone: '✦',
-    titre: 'Satisfait ou remboursé',
-    corps: 'Retour accepté sous 7 jours si le produit n\'est pas utilisé. Votre satisfaction est notre priorité.',
+    titre: 'Vérifiez avant de payer',
+    corps: 'Inspectez votre colis devant le livreur avant de régler. Aucun paiement si le produit ne vous convient pas.',
   },
   {
     icone: '✦',
@@ -53,8 +53,8 @@ const POINTS_AR = [
   },
   {
     icone: '✦',
-    titre: 'راضي ولا مردود',
-    corps: 'الإرجاع مقبول في 7 أيام إذا ما استعملتيهاش. رضاك هو الأهم.',
+    titre: 'افحصي قبل ما تدفعي',
+    corps: 'افتحي الطلب قدام الموزع وافحصيه. إذا ما عجبكيش، ترديه وما تدفعيش ولا دينار.',
   },
   {
     icone: '✦',

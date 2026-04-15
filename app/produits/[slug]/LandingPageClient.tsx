@@ -23,7 +23,7 @@ import ExitIntentPopup from '@/components/store/ExitIntentPopup'
 const FAQ_FR = [
   { q: 'Sous combien de jours vais-je recevoir ma commande ?', r: "Livraison offerte sous 1 à 3 jours dans les 69 wilayas. Vous retirez votre colis au bureau CH Accessoires de votre wilaya. Notre équipe vous contacte avant la livraison pour confirmer." },
   { q: 'Je n\'ai pas de carte bancaire — comment je paye ?', r: "Aucune carte requise. Vous payez en espèces uniquement à la réception de votre colis — Cash on Delivery (COD). Zéro risque, zéro engagement à l'avance." },
-  { q: 'Est-ce que je peux refuser le colis si je ne suis pas satisfait ?', r: "Oui. Ouvrez le colis devant le livreur, inspectez le produit. Si vous n'êtes pas satisfait, vous le refusez et ne payez rien. C'est votre droit absolu." },
+  { q: 'Puis-je vérifier le colis avant de payer ?', r: "Oui, absolument. Vous ouvrez le colis devant le livreur et vous l'inspectez. Si le produit ne correspond pas, vous le refusez sur place et ne payez rien. Aucun retour postal, aucune démarche." },
   { q: 'La qualité est vraiment premium pour ce prix ?', r: "Absolument. Cuir synthétique haut de gamme, coutures renforcées, doublure robuste. Nous avons volontairement limité nos marges pour rendre l'accessoire luxe accessible. Jugez par vous-même à la réception — vous ne serez pas déçu." },
   { q: 'Puis-je commander les 2 coloris en même temps ?', r: "Oui ! Sélectionnez l'option « 2 Sacs » dans le formulaire pour recevoir le Noir et le Burgundy ensemble au prix de 6 000 DA — économie de 1 000 DA et livraison offerte incluse." },
 ]
@@ -31,7 +31,7 @@ const FAQ_FR = [
 const FAQ_AR = [
   { q: 'قداش يأخذ التوصيل ووصلي طلبي؟', r: "التوصيل مجاني ويأخذ 1 إلى 3 أيام في قاع الـ 69 ولاية. تمشي تاخذ الطلب من البيرو في ولايتك. الفريق ديالنا يتصل بك قبل التسليم للتأكيد." },
   { q: 'ما عنديش بطاقة — كيفاش ندفع؟', r: "ما كاين بطاقة ولا دفع عبر النت. تدفع بالكاش غير وقت تستلم طلبك. ما كاين مخاطرة — ما تلتزميش بحتة قبل ما تشوفي المنتج." },
-  { q: 'واش نقدر نرد الشنطة إذا ما عجبتنيش؟', r: "آه، بالطبع. افتحي الطلب قدام الموزع وافحصيه. إذا ما عجبكيش، ترديه مباشرة وما تدفعيش ولا دينار. هذا حقك." },
+  { q: 'واش نقدر نفحص الطلب قبل ما ندفع؟', r: "آه، بالطبع. تفتحي الطلب قدام الموزع وتفحصيه. إذا ما عجبكيش، ترديه في الحال وما تدفعيش ولا دينار. ما كاين رجوع بريدي ولا إجراءات." },
   { q: 'واش الجودة حقيقية بهذا الثمن؟', r: "آه. جلد صناعي هاي-إند، خياطة محكمة، بطانة متينة. خفضنا الهامش ديالنا عشان الجودة تكون في المتناول. حكمي بنفسك وقت ما تستلمي — ما تتحسريش." },
   { q: 'واش نقدر نطلب الشنطتين مع بعض؟', r: "آه! اختاري خيار « شنطتين » في الفورم وتاخذي الكحل والبورغاندي معاً بـ 6000 دج — توفير 1000 دج والتوصيل مجاني مشمول." },
 ]
@@ -604,8 +604,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
 
           <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '16px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginBottom: '48px', lineHeight: 1.8, letterSpacing: estArabe ? 0 : '0.03em' }}>
             {estArabe
-              ? `${produit.prix.toLocaleString('fr-DZ')} دج · التوصيل مجاني · الدفع عند الاستلام · راضية ولا مردودة`
-              : `${produit.prix.toLocaleString('fr-DZ')} DA · Livraison offerte · Paiement à la réception · Satisfait ou remboursé`}
+              ? `${produit.prix.toLocaleString('fr-DZ')} دج · التوصيل مجاني · الدفع عند الاستلام · افحصي قبل ما تدفعي`
+              : `${produit.prix.toLocaleString('fr-DZ')} DA · Livraison offerte · Paiement à la réception · Vérification à la livraison`}
           </p>
 
           <a
