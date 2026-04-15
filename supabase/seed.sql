@@ -18,17 +18,17 @@ declare
 begin
 
   -- ============================================================
-  -- PRODUIT : Sac CH Signature
+  -- PRODUIT : Sac Premium CH Accessoires
   -- ============================================================
   insert into produits (id, slug, nom_fr, nom_ar, description_fr, description_ar, prix, actif)
   values (
     v_produit_id,
     'sac-ch-signature',
-    'Sac CH Signature',
-    'حقيبة CH سيغناتشر',
+    'Sac Premium CH Accessoires',
+    'حقيبة CH بريميوم',
     'Le sac iconique de CH Accessoires. Cuir synthétique premium, doublure soignée, fermeture éclair dorée. Conçu pour accompagner votre quotidien avec élégance.',
     'الحقيبة الأيقونية من CH Accessoires. جلد صناعي فاخر، بطانة مصنوعة بعناية، سحاب ذهبي اللون. مصممة لتصحب يومك بأناقة.',
-    2500,
+    3500,
     true
   )
   on conflict (id) do nothing;

@@ -24,7 +24,7 @@ const FAQ_FR = [
   { q: 'Quel est le délai de livraison ?', r: "Livraison offerte sous 1 à 5 jours ouvrables dans les 69 wilayas. Vous serez contacté par téléphone avant la livraison." },
   { q: 'Comment fonctionne le paiement ?', r: "Vous payez uniquement à la réception. Aucune carte bancaire requise — paiement Cash on Delivery (COD) uniquement." },
   { q: 'Puis-je vérifier le produit avant de payer ?', r: "Oui, absolument. Inspectez votre colis devant le livreur avant de régler. C'est votre droit." },
-  { q: 'Le sac existe en d\'autres tailles ?', r: "Le Sac CH Signature est en taille unique standard, conçue pour un usage quotidien polyvalent et élégant." },
+  { q: 'Le sac existe en d\'autres tailles ?', r: "Le Sac Premium CH Accessoires est en taille unique standard, conçue pour un usage quotidien polyvalent et élégant." },
   { q: 'Comment choisir le coloris ?', r: "Le Noir est intemporel et polyvalent. Le Burgundy est profond et élégant — parfait pour se démarquer." },
 ]
 
@@ -141,13 +141,13 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
 
   const WHY = estArabe ? [
     { n: '01', t: 'جودة فاخرة', c: 'جلد صناعي هاي-إند وبطانة متينة تبقى مدة طويلة. كل تفصيلة مختارة بعناية.' },
-    { n: '02', t: 'ثمن في المتناول', c: 'الفاخر بـ 2500 دج. جودة عالية بثمن عادل — بلا تنازل.' },
+    { n: '02', t: 'ثمن في المتناول', c: 'الفاخر بـ 3500 دج. جودة عالية بثمن عادل — بلا تنازل.' },
     { n: '03', t: 'ليفراج مجاني وسريع', c: '1–5 أيام في الـ 69 ولاية. متابعة هاتفية شخصية قبل التسليم.' },
     { n: '04', t: 'راضٍ أو مسترد', c: 'افحص طلبك قدام الموزع قبل ما تدفع. رضاك الأولوية.' },
     { n: '05', t: 'هدية مثالية', c: 'تغليف أنيق وبطاقة هدية مخصصة عند الطلب. لحظة ما تنساهاش.' },
   ] : [
     { n: '01', t: 'Qualité premium', c: 'Cuir synthétique haut de gamme, doublure robuste. Chaque détail est pensé pour durer.' },
-    { n: '02', t: 'Prix accessible', c: 'Le luxe à 2 500 DA — sans compromis sur la qualité ni le style.' },
+    { n: '02', t: 'Prix accessible', c: 'Le luxe à 3 500 DA — sans compromis sur la qualité ni le style.' },
     { n: '03', t: 'Livraison offerte', c: 'Livraison gratuite en 1–5 jours dans les 69 wilayas. Suivi téléphonique personnalisé.' },
     { n: '04', t: 'Vérifiez avant de payer', c: 'Inspectez votre colis devant le livreur. Vous payez seulement si vous êtes satisfait.' },
     { n: '05', t: 'Le cadeau parfait', c: 'Emballage soigné et message personnalisé disponibles sur demande.' },
@@ -211,7 +211,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             {estArabe ? 'دفع عند الاستلام' : 'Paiement à la livraison'}
           </p>
           <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '22px', fontWeight: 500, color: '#C9A84C', lineHeight: 1 }}>
-            2 500 <span style={{ fontSize: '12px', fontWeight: 300 }}>DA</span>
+            {produit.prix.toLocaleString('fr-DZ')} <span style={{ fontSize: '12px', fontWeight: 300 }}>DA</span>
           </p>
         </div>
         <a
@@ -621,7 +621,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           </h2>
 
           <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '14px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginBottom: '48px', lineHeight: 1.8, letterSpacing: estArabe ? 0 : '0.03em' }}>
-            {estArabe ? '2 500 دج — دفع عند الاستلام — توصيل لجميع الولايات' : "2 500 DA · Paiement à la livraison · Livraison dans toute l'Algérie"}
+            {estArabe ? `${produit.prix.toLocaleString('fr-DZ')} دج — دفع عند الاستلام — توصيل لجميع الولايات` : `${produit.prix.toLocaleString('fr-DZ')} DA · Paiement à la livraison · Livraison dans toute l'Algérie`}
           </p>
 
           <a
@@ -643,7 +643,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
               transition: 'background 0.15s ease',
             }}
           >
-            {estArabe ? <>اطلبي الآن — <span dir="ltr">2 500 DA</span></> : 'Je veux ce sac — 2 500 DA'}
+            {estArabe ? <>اطلبي الآن — <span dir="ltr">{produit.prix.toLocaleString('fr-DZ')} DA</span></> : `Je veux ce sac — ${produit.prix.toLocaleString('fr-DZ')} DA`}
           </a>
 
           <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', marginTop: '20px', letterSpacing: estArabe ? 0 : '0.04em' }}>

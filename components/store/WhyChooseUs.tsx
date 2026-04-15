@@ -16,7 +16,7 @@ const POINTS_FR = [
   {
     icone: '✦',
     titre: 'Prix accessible',
-    corps: 'Le luxe à 2 500 DA. Qualité premium sans compromis sur votre budget.',
+    corps: 'Le luxe à 3 500 DA. Qualité premium sans compromis sur votre budget.',
   },
   {
     icone: '✦',
@@ -44,7 +44,7 @@ const POINTS_AR = [
   {
     icone: '✦',
     titre: 'ثمن في المتناول',
-    corps: 'الفاخر بـ 2500 دج. جودة عالية بلا ما تتجاوز الميزانية.',
+    corps: 'الفاخر بـ 3500 دج. جودة عالية بلا ما تتجاوز الميزانية.',
   },
   {
     icone: '✦',

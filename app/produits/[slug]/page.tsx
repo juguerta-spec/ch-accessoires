@@ -37,9 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://ch-accessoires.com'
 
   return {
-    title: `${produit.nom_fr} — 2 500 DA | Livraison dans toute l'Algérie`,
+    title: `${produit.nom_fr} — 3 500 DA | Livraison dans toute l'Algérie`,
     description:
-      `Découvrez le ${produit.nom_fr}, qualité premium à 2 500 DA. Livraison rapide dans toute l'Algérie. Commande en ligne, paiement à la livraison.`,
+      `Découvrez le ${produit.nom_fr}, qualité premium à 3 500 DA. Livraison rapide dans toute l'Algérie. Commande en ligne, paiement à la livraison.`,
     openGraph: {
       title: `${produit.nom_fr} — CH Accessoires`,
       description: produit.description_fr || '',
