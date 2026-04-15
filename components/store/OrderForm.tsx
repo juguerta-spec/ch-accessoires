@@ -47,6 +47,10 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
   const [erreurs, setErreurs] = useState<Erreurs>({})
   const [envoi, setEnvoi] = useState(false)
   const [erreurGlobale, setErreurGlobale] = useState('')
+  // Pack Duo : Noir + Burgundy à 6 000 DA (vs solo 3 500 DA)
+  const [packDuo, setPackDuo] = useState(false)
+  const PRIX_PACK = 6000
+  const prixFinal = packDuo ? PRIX_PACK : prix
 
   const checkoutDeclenche = useRef(false)
   const eventIdCheckout = useRef(genererEventId())
@@ -98,9 +102,13 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           adresse: champs.type_livraison === 'domicile'
             ? champs.adresse.trim()
             : `Bureau de poste — ${champs.wilaya}`,
-          variante_id: variante.id, quantite: 1,
+          variante_id: variante.id,
+          quantite: packDuo ? 2 : 1,
+          pack_duo: packDuo,
           message_cadeau: champs.message_cadeau.trim() || undefined,
-          notes: champs.type_livraison === 'bureau' ? 'Livraison: Bureau de poste' : 'Livraison: A domicile',
+          notes: packDuo
+            ? `PACK DUO Noir+Burgundy — ${champs.type_livraison === 'bureau' ? 'Bureau' : 'Domicile'}`
+            : (champs.type_livraison === 'bureau' ? 'Livraison: Bureau' : 'Livraison: Domicile'),
           fbclid: params.get('fbclid') || undefined,
           utm_source: params.get('utm_source') || undefined,
           utm_campaign: params.get('utm_campaign') || undefined,
@@ -116,7 +124,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
       }
       // Lead Pixel : commande soumise (COD non confirmée)
       // Le même eventId est envoyé au CAPI server-side → déduplication Meta
-      trackLead({ eventId: eventIdAchat, commandeNumero: json.data.numero, montant: prix, quantite: 1, varianteId: variante.id })
+      trackLead({ eventId: eventIdAchat, commandeNumero: json.data.numero, montant: prixFinal, quantite: packDuo ? 2 : 1, varianteId: variante.id })
       router.push(`/commande/confirmation?numero=${json.data.numero}&id=${json.data.id}&event_id=${eventIdAchat}`)
     } catch {
       setErreurGlobale(estArabe ? 'مشكل في الاتصال' : 'Erreur de connexion.')
@@ -205,7 +213,85 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
 
       <form onSubmit={soumettre} noValidate>
 
-        {/* ── Sélecteur coloris ── */}
+        {/* ── Choix de l'offre : Solo ou Pack Duo ── */}
+        <div style={{ marginBottom: '32px', paddingBottom: '28px', borderBottom: '0.5px solid rgba(201,168,76,0.15)' }}>
+          <label style={labelSt}>{estArabe ? 'اختار عرضك' : 'Votre offre'}</label>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '4px' }}>
+
+            {/* Option Solo */}
+            <button
+              type="button"
+              onClick={() => setPackDuo(false)}
+              style={{
+                border: !packDuo ? '1.5px solid #C9A84C' : '0.5px solid rgba(201,168,76,0.25)',
+                background: !packDuo ? 'rgba(201,168,76,0.08)' : 'transparent',
+                padding: '16px 10px',
+                cursor: 'pointer',
+                textAlign: 'center',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.4)', marginBottom: '4px' }}>
+                {estArabe ? 'سولو' : 'Solo'}
+              </p>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '11px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
+                {estArabe ? 'لون واحد' : '1 sac · 1 coloris'}
+              </p>
+              <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '20px', fontWeight: 500, color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', lineHeight: 1 }}>
+                {prix.toLocaleString('fr-DZ')} <span style={{ fontSize: '11px', fontWeight: 300 }}>DA</span>
+              </p>
+            </button>
+
+            {/* Option Pack Duo */}
+            <button
+              type="button"
+              onClick={() => setPackDuo(true)}
+              style={{
+                border: packDuo ? '1.5px solid #C9A84C' : '0.5px solid rgba(201,168,76,0.25)',
+                background: packDuo ? 'rgba(201,168,76,0.08)' : 'transparent',
+                padding: '16px 10px',
+                cursor: 'pointer',
+                textAlign: 'center',
+                transition: 'all 0.15s ease',
+                position: 'relative',
+              }}
+            >
+              {/* Badge "Meilleure valeur" */}
+              <span style={{
+                position: 'absolute',
+                top: '-10px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: '#C9A84C',
+                color: '#0A0A0A',
+                fontFamily: 'var(--font-body)',
+                fontSize: '8px',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                padding: '2px 8px',
+                whiteSpace: 'nowrap',
+              }}>
+                {estArabe ? 'أحسن عرض' : 'Best value'}
+              </span>
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.4)', marginBottom: '4px' }}>
+                {estArabe ? 'باك دو' : 'Pack Duo'}
+              </p>
+              <p style={{ fontFamily: fa, fontSize: '11px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
+                {estArabe ? 'كحل + برغاندي' : 'Noir + Burgundy'}
+              </p>
+              <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '20px', fontWeight: 500, color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', lineHeight: 1 }}>
+                {PRIX_PACK.toLocaleString('fr-DZ')} <span style={{ fontSize: '11px', fontWeight: 300 }}>DA</span>
+              </p>
+              <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 300, color: 'rgba(201,168,76,0.5)', marginTop: '3px', letterSpacing: '0.04em' }}>
+                {estArabe ? 'توفير 1 000 دج' : 'économie 1 000 DA'}
+              </p>
+            </button>
+          </div>
+        </div>
+
+        {/* ── Sélecteur coloris (masqué si Pack Duo — les deux sont inclus) ── */}
+        {!packDuo && (
         <div style={{ marginBottom: '32px', paddingBottom: '28px', borderBottom: '0.5px solid rgba(201,168,76,0.15)' }}>
           <label style={labelSt}>{T.coloris}</label>
           <div style={{ marginTop: '4px' }}>
@@ -217,6 +303,18 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
             />
           </div>
         </div>
+        )}
+        {packDuo && (
+        <div style={{ marginBottom: '32px', paddingBottom: '28px', borderBottom: '0.5px solid rgba(201,168,76,0.15)' }}>
+          <p style={labelSt}>{estArabe ? 'الألوان المشمولة' : 'Coloris inclus'}</p>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginTop: '4px' }}>
+            <span style={{ width: 20, height: 20, borderRadius: '50%', background: '#1a1a1a', border: '1.5px solid #C9A84C', display: 'inline-block' }} />
+            <span style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 300, color: 'rgba(250,250,247,0.5)' }}>{estArabe ? 'كحل' : 'Noir'}</span>
+            <span style={{ marginLeft: 8, width: 20, height: 20, borderRadius: '50%', background: '#800020', border: '1.5px solid #C9A84C', display: 'inline-block' }} />
+            <span style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 300, color: 'rgba(250,250,247,0.5)' }}>{estArabe ? 'برغاندي' : 'Burgundy'}</span>
+          </div>
+        </div>
+        )}
 
         {/* ── Nom complet ── */}
         <div style={{ marginBottom: '28px' }}>
@@ -353,7 +451,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
             letterSpacing: '-0.01em',
             lineHeight: 1,
           }}>
-            {prix.toLocaleString('fr-DZ')} <span style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(201,168,76,0.6)' }}>DA</span>
+            {prixFinal.toLocaleString('fr-DZ')} <span style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(201,168,76,0.6)' }}>DA</span>
           </span>
         </div>
 
@@ -400,9 +498,13 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
             <><span className="spinner" />{T.loading}</>
           ) : estArabe ? (
             /* dir="ltr" sur le prix pour éviter l'inversion "DA 500 2" en RTL */
-            <>نبغيها — <span dir="ltr">{prix.toLocaleString('fr-DZ')} DA</span></>
+            packDuo
+              ? <>نبغي الباك — <span dir="ltr">{PRIX_PACK.toLocaleString('fr-DZ')} DA</span></>
+              : <>نبغيها — <span dir="ltr">{prix.toLocaleString('fr-DZ')} DA</span></>
           ) : (
-            `Je veux ce sac — ${prix.toLocaleString('fr-DZ')} DA`
+            packDuo
+              ? `Commander le Pack Duo — ${PRIX_PACK.toLocaleString('fr-DZ')} DA`
+              : `Je veux ce sac — ${prix.toLocaleString('fr-DZ')} DA`
           )}
         </button>
 

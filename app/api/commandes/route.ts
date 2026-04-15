@@ -46,6 +46,8 @@ type CommandeBody = {
   event_id?: string
   // A/B test — variante affichée lors de la commande
   ab_variant?: string
+  // Pack Duo : Noir + Burgundy — prix fixe 6 000 DA, décrémente les 2 variantes
+  pack_duo?: boolean
 }
 
 export async function POST(request: NextRequest) {
@@ -178,7 +180,9 @@ export async function POST(request: NextRequest) {
     )
   }
 
-  const montant = produit.prix * qte
+  // Pack Duo : prix fixe 6 000 DA (Noir + Burgundy) — sinon prix unitaire × quantité
+  const PRIX_PACK_DUO = 6000
+  const montant = body.pack_duo && qte === 2 ? PRIX_PACK_DUO : produit.prix * qte
 
   // --- Upsert client (création ou récupération par téléphone) ---
   const { data: clientExistant } = await supabase
@@ -256,14 +260,35 @@ export async function POST(request: NextRequest) {
   }
 
   // --- Décrémentation du stock ---
-  const { error: errStock } = await supabase
-    .from('variantes')
-    .update({ stock: variante.stock - qte })
-    .eq('id', variante_id)
+  if (body.pack_duo) {
+    // Pack Duo : décrémenter 1 unité sur chaque variante (noir ET burgundy)
+    const { error: errStock1 } = await supabase
+      .from('variantes')
+      .update({ stock: variante.stock - 1 })
+      .eq('id', variante_id)
+    if (errStock1) console.error('[API Commandes] Erreur stock pack (variante 1):', errStock1)
 
-  if (errStock) {
-    // Non bloquant : la commande est créée, le stock sera corrigé manuellement si besoin
-    console.error('[API Commandes] Erreur décrémentation stock:', errStock)
+    // Trouver et décrémenter l'autre variante du même produit
+    const { data: autreVariante } = await supabase
+      .from('variantes')
+      .select('id, stock')
+      .eq('produit_id', variante.produit_id)
+      .neq('id', variante_id)
+      .single()
+    if (autreVariante) {
+      const { error: errStock2 } = await supabase
+        .from('variantes')
+        .update({ stock: autreVariante.stock - 1 })
+        .eq('id', autreVariante.id)
+      if (errStock2) console.error('[API Commandes] Erreur stock pack (variante 2):', errStock2)
+    }
+  } else {
+    // Solo : décrémentation normale
+    const { error: errStock } = await supabase
+      .from('variantes')
+      .update({ stock: variante.stock - qte })
+      .eq('id', variante_id)
+    if (errStock) console.error('[API Commandes] Erreur décrémentation stock:', errStock)
   }
 
   // --- Notifications fire-and-forget (non bloquantes) ---
@@ -273,7 +298,7 @@ export async function POST(request: NextRequest) {
     client:    `${prenom.trim()} ${nom.trim()}`,
     telephone,
     wilaya,
-    coloris:   variante.couleur_fr,
+    coloris:   body.pack_duo ? 'Pack Duo Noir+Burgundy' : variante.couleur_fr,
     montant,
     quantite:  qte,
   }).catch((err) => console.error('[Notifications] Erreur envoi admin:', err))

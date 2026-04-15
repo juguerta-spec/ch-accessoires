@@ -89,6 +89,24 @@ function IcoCheckCircle() {
   )
 }
 
+function IcoPin() {
+  return (
+    <svg width="18" height="22" viewBox="0 0 18 22" fill="none" aria-hidden="true">
+      <path d="M9 1C5.13 1 2 4.13 2 8c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" stroke="#C9A84C" strokeWidth="1.2" fill="rgba(201,168,76,0.08)"/>
+      <circle cx="9" cy="8" r="2.5" stroke="#C9A84C" strokeWidth="1.2"/>
+    </svg>
+  )
+}
+
+function IcoClock() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <circle cx="10" cy="10" r="9" stroke="#C9A84C" strokeWidth="1.2"/>
+      <path d="M10 5v5l3 3" stroke="#C9A84C" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
 type Props = { produit: Produit; variantes: Variante[]; commandesToday: number; abVariant?: 'A' | 'B' }
 
 export default function LandingPageClient({ produit, variantes, commandesToday, abVariant = 'A' }: Props) {
@@ -348,25 +366,30 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             </span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(201,168,76,0.5)' }}>DA</span>
           </div>
-          {/* Badge livraison offerte */}
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
-            <span style={{
-              fontFamily: fa,
-              fontSize: estArabe ? '13px' : '10px',
-              fontWeight: 500,
-              letterSpacing: estArabe ? 0 : '0.1em',
-              textTransform: estArabe ? 'none' : 'uppercase',
-              color: '#C9A84C',
-              background: 'rgba(201,168,76,0.12)',
-              border: '0.5px solid rgba(201,168,76,0.3)',
-              padding: '3px 10px',
-            }}>
-              {estArabe ? '🎁 التوصيل مجاني' : '🎁 Livraison offerte'}
-            </span>
+          {/* ── Strip livraison offerte — mise en valeur principale ── */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            border: '0.5px solid rgba(201,168,76,0.3)',
+            margin: '18px 0 22px',
+          }}>
+            {[
+              { ico: <IcoTruck />, t: estArabe ? 'توصيل مجاني' : 'Livraison offerte', c: estArabe ? 'بلا رسوم' : 'Sans frais' },
+              { ico: <IcoPin />,   t: estArabe ? '69 ولاية' : '69 wilayas',           c: estArabe ? 'قاع الجزائر' : 'Toute l\'Algérie' },
+              { ico: <IcoClock />, t: estArabe ? '1–3 أيام' : '1–3 jours',            c: estArabe ? 'توصيل سريع' : 'Livraison rapide' },
+            ].map((item, i) => (
+              <div key={i} style={{
+                padding: '14px 6px',
+                textAlign: 'center',
+                background: 'rgba(201,168,76,0.05)',
+                borderRight: i < 2 ? '0.5px solid rgba(201,168,76,0.2)' : 'none',
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '7px' }}>{item.ico}</div>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '9px', fontWeight: 700, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '2px', lineHeight: 1.2 }}>{item.t}</p>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '11px' : '9px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', letterSpacing: estArabe ? 0 : '0.04em' }}>{item.c}</p>
+              </div>
+            ))}
           </div>
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.35)', marginBottom: '14px' }}>
-            {estArabe ? 'دفع عند الاستلام — 69 ولاية' : 'Paiement à la livraison — 69 wilayas'}
-          </p>
 
           {/* Badge social proof — commandes du jour */}
           {commandesToday > 0 && (
