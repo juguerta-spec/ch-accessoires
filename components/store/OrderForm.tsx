@@ -125,7 +125,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
       // Lead Pixel : commande soumise (COD non confirmée)
       // Le même eventId est envoyé au CAPI server-side → déduplication Meta
       trackLead({ eventId: eventIdAchat, commandeNumero: json.data.numero, montant: prixFinal, quantite: packDuo ? 2 : 1, varianteId: variante.id })
-      router.push(`/commande/confirmation?numero=${json.data.numero}&id=${json.data.id}&event_id=${eventIdAchat}`)
+      router.push(`/commande/confirmation?numero=${json.data.numero}&id=${json.data.id}&event_id=${eventIdAchat}&montant=${prixFinal}&quantite=${packDuo ? 2 : 1}`)
     } catch {
       setErreurGlobale(estArabe ? 'مشكل في الاتصال' : 'Erreur de connexion.')
       setEnvoi(false)

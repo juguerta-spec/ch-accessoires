@@ -75,6 +75,7 @@ create table if not exists commandes (
   utm_source          text,
   utm_campaign        text,
   utm_content         text,
+  ab_variant          text,                 -- Variante A/B test affichée lors de la commande
   created_at          timestamptz default now(),
   updated_at          timestamptz default now()
 );

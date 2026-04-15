@@ -38,6 +38,8 @@ function ConfirmationContenu() {
   const numero     = searchParams.get('numero') || ''
   const commandeId = searchParams.get('id') || ''
   const eventId    = searchParams.get('event_id') || ''
+  const montant    = parseInt(searchParams.get('montant') || '3500', 10)
+  const quantite   = parseInt(searchParams.get('quantite') || '1', 10)
   const numero_tel = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ''
 
   // Lead Pixel — même eventId que OrderForm + CAPI → déduplication Meta
@@ -46,12 +48,12 @@ function ConfirmationContenu() {
       trackLead({
         eventId,
         commandeNumero: numero,
-        montant: 3500,
-        quantite: 1,
+        montant,
+        quantite,
         varianteId: commandeId,
       })
     }
-  }, [numero, eventId, commandeId])
+  }, [numero, eventId, commandeId, montant, quantite])
 
   const fa = estArabe ? 'var(--font-arabic)' : 'var(--font-body)'
   const fd = estArabe ? 'var(--font-arabic)' : 'var(--font-display)'
@@ -264,7 +266,7 @@ function ConfirmationContenu() {
               fontFamily: 'var(--font-body)', fontSize: '28px',
               fontWeight: 500, color: 'var(--ch-noir)',
             }}>
-              3 500
+              {montant.toLocaleString('fr-DZ')}
             </span>
             <span style={{
               fontFamily: 'var(--font-body)', fontSize: '13px',

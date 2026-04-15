@@ -21,6 +21,16 @@ export const metadata: Metadata = {
     siteName: 'CH Accessoires',
     locale: 'fr_DZ',
     type: 'website',
+    title: 'CH Accessoires — Sacs premium pour femme | Algérie',
+    description: "Sac haut de gamme à 3 500 DA. Livraison offerte dans toute l'Algérie. Paiement à la livraison.",
+    images: [
+      {
+        url: '/og-image.jpg',  // Placer une image 1200×630px dans /public/og-image.jpg
+        width: 1200,
+        height: 630,
+        alt: 'CH Accessoires — Sac premium Algérie',
+      },
+    ],
   },
   robots: {
     index: true,
