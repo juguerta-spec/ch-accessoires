@@ -75,9 +75,12 @@ export default async function ProduitPage({ params }: Props) {
   const abRaw = cookieStore.get('ch_ab')?.value
   const abVariant: 'A' | 'B' = abRaw === 'B' ? 'B' : 'A'
 
+  // Prix forcé à 3 500 DA (le temps que la DB soit mise à jour via UPDATE produits SET prix = 3500)
+  const produitFinal = { ...produit, prix: 3500 }
+
   return (
     <LandingPageClient
-      produit={produit}
+      produit={produitFinal}
       variantes={produit.variantes as Variante[]}
       commandesToday={commandesToday}
       abVariant={abVariant}
