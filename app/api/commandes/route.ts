@@ -8,6 +8,7 @@ import { createAdminClient } from '@/lib/supabase-admin'
 import { isWilayaValide } from '@/lib/wilayas'
 import { sendConversionEvent } from '@/lib/meta-conversions-api'
 import { envoyerNotificationAdmin } from '@/lib/notifications'
+import { envoyerWhatsAppClient } from '@/lib/whatsapp-client'
 
 // Regex validation téléphone algérien
 const REGEX_TELEPHONE = /^(05|06|07)[0-9]{8}$/
@@ -265,7 +266,8 @@ export async function POST(request: NextRequest) {
     console.error('[API Commandes] Erreur décrémentation stock:', errStock)
   }
 
-  // --- Notification admin (WhatsApp + Email) — fire-and-forget ---
+  // --- Notifications fire-and-forget (non bloquantes) ---
+  // Notification admin (WhatsApp CallMeBot + Email Resend)
   envoyerNotificationAdmin({
     numero:    commande.numero,
     client:    `${prenom.trim()} ${nom.trim()}`,
@@ -275,6 +277,13 @@ export async function POST(request: NextRequest) {
     montant,
     quantite:  qte,
   }).catch((err) => console.error('[Notifications] Erreur envoi admin:', err))
+
+  // WhatsApp de confirmation automatique au CLIENT via Meta Cloud API
+  envoyerWhatsAppClient({
+    telephone,
+    prenom:  prenom.trim(),
+    numero:  commande.numero,
+  }).catch((err) => console.error('[WhatsApp Client] Erreur:', err))
 
   // --- Envoi événement Meta CAPI : Lead ---
   // Lead = commande COD soumise, pas encore confirmée ni payée.

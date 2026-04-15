@@ -47,8 +47,6 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
   const [erreurs, setErreurs] = useState<Erreurs>({})
   const [envoi, setEnvoi] = useState(false)
   const [erreurGlobale, setErreurGlobale] = useState('')
-  // Toggle message cadeau : masqué par défaut pour alléger le formulaire
-  const [afficherMessage, setAfficherMessage] = useState(false)
 
   const checkoutDeclenche = useRef(false)
   const eventIdCheckout = useRef(genererEventId())
@@ -137,8 +135,6 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
     bureau:    estArabe ? 'مكتب البريد' : 'Bureau de poste',
     adresse:   estArabe ? 'المدينة / الحي' : 'Ville',
     phAdresse: estArabe ? 'مثال: باب الوادي، بئر مراد رايس...' : 'Ex : Kouba, Bab El Oued, Ben Aknoun...',
-    message:   estArabe ? 'رسالة هدية (اختياري)' : 'Message cadeau (optionnel)',
-    phMsg:     estArabe ? 'رسالتك هنا...' : 'Votre message ici...',
     coloris:   estArabe ? 'اختاري اللون' : 'Choisir le coloris',
     total:     estArabe ? 'المبلغ الكلي' : 'Total',
     loading:   estArabe ? 'راه يتبعث...' : 'Envoi...',
@@ -324,53 +320,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           </div>
         )}
 
-        {/* ── Message cadeau (toggle) — masqué par défaut ── */}
-        <div style={{ marginBottom: '36px' }}>
-          <button
-            type="button"
-            onClick={() => setAfficherMessage(p => !p)}
-            style={{
-              display: 'flex', alignItems: 'center', gap: '10px',
-              background: 'none', border: 'none', cursor: 'pointer', padding: '0',
-            }}
-          >
-            {/* Case à cocher style luxe */}
-            <span style={{
-              width: '16px', height: '16px', flexShrink: 0,
-              border: afficherMessage ? '1.5px solid #C9A84C' : '0.5px solid rgba(201,168,76,0.35)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: afficherMessage ? 'rgba(201,168,76,0.1)' : 'transparent',
-              transition: 'all 0.15s ease',
-            }}>
-              {afficherMessage && (
-                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" aria-hidden="true">
-                  <path d="M1 4l2.5 2.5 5.5-6" stroke="#C9A84C" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-            </span>
-            <span style={{
-              fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500,
-              letterSpacing: estArabe ? 0 : '0.15em',
-              textTransform: estArabe ? 'none' : 'uppercase',
-              color: afficherMessage ? 'rgba(201,168,76,0.9)' : 'rgba(201,168,76,0.55)',
-              transition: 'color 0.15s ease',
-            }}>
-              {estArabe ? 'زيد رسالة هدية (اختياري)' : 'Ajouter un message cadeau (optionnel)'}
-            </span>
-          </button>
-          {afficherMessage && (
-            <div style={{ marginTop: '16px' }}>
-              <textarea
-                className="form-input"
-                value={champs.message_cadeau}
-                onChange={e => maj('message_cadeau', e.target.value)}
-                placeholder={T.phMsg}
-                rows={2}
-                style={{ ...inputSt, resize: 'none' }}
-              />
-            </div>
-          )}
-        </div>
+        {/* Message cadeau supprimé — réduit la friction et améliore le taux de conversion */}
 
         {/* ── Récap total — prix toujours LTR ── */}
         <div style={{
@@ -403,7 +353,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
             letterSpacing: '-0.01em',
             lineHeight: 1,
           }}>
-            2 500 <span style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(201,168,76,0.6)' }}>DA</span>
+            {prix.toLocaleString('fr-DZ')} <span style={{ fontSize: '14px', fontWeight: 300, color: 'rgba(201,168,76,0.6)' }}>DA</span>
           </span>
         </div>
 
@@ -450,9 +400,9 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
             <><span className="spinner" />{T.loading}</>
           ) : estArabe ? (
             /* dir="ltr" sur le prix pour éviter l'inversion "DA 500 2" en RTL */
-            <>نبغيها — <span dir="ltr">2 500 DA</span></>
+            <>نبغيها — <span dir="ltr">{prix.toLocaleString('fr-DZ')} DA</span></>
           ) : (
-            'Je veux ce sac — 2 500 DA'
+            `Je veux ce sac — ${prix.toLocaleString('fr-DZ')} DA`
           )}
         </button>
 

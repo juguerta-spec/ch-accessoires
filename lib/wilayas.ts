@@ -1,5 +1,6 @@
 // ============================================================
-// lib/wilayas.ts — Liste des 58 wilayas d'Algérie
+// lib/wilayas.ts — Liste des 69 wilayas d'Algérie
+// Inclut les 11 nouvelles wilayas annoncées le 16 novembre 2025
 // Utilisé dans le formulaire COD et les filtres admin
 // ============================================================
 
@@ -66,8 +67,20 @@ export const WILAYAS: Wilaya[] = [
   { code: 54, nom_fr: 'In Guezzam',        nom_ar: 'عين قزام' },
   { code: 55, nom_fr: 'Touggourt',         nom_ar: 'تقرت' },
   { code: 56, nom_fr: 'Djanet',            nom_ar: 'جانت' },
-  { code: 57, nom_fr: 'El M\'Ghair',       nom_ar: 'المغير' },
-  { code: 58, nom_fr: 'El Meniaa',         nom_ar: 'المنيعة' },
+  { code: 57, nom_fr: 'El M\'Ghair',           nom_ar: 'المغير' },
+  { code: 58, nom_fr: 'El Meniaa',             nom_ar: 'المنيعة' },
+  // Nouvelles wilayas — loi du 16 novembre 2025 (Hauts Plateaux + Sud)
+  { code: 59, nom_fr: 'Aflou',                 nom_ar: 'أفلو' },
+  { code: 60, nom_fr: 'El Abiodh Sidi Cheikh', nom_ar: 'الأبيض سيدي الشيخ' },
+  { code: 61, nom_fr: 'El Aricha',             nom_ar: 'العريشة' },
+  { code: 62, nom_fr: 'El Kantara',            nom_ar: 'القنطرة' },
+  { code: 63, nom_fr: 'Barika',                nom_ar: 'بريكة' },
+  { code: 64, nom_fr: 'Bou Saada',             nom_ar: 'بوسعادة' },
+  { code: 65, nom_fr: 'Bir El Ater',           nom_ar: 'بير العاتر' },
+  { code: 66, nom_fr: 'Ksar El Boukhari',      nom_ar: 'قصر البخاري' },
+  { code: 67, nom_fr: 'Ksar Chellala',         nom_ar: 'قصر الشلالة' },
+  { code: 68, nom_fr: 'Ain Oussara',           nom_ar: 'عين وسارة' },
+  { code: 69, nom_fr: 'Messaad',               nom_ar: 'مسعد' },
 ]
 
 // Noms FR uniquement — pour le select du formulaire et les filtres admin

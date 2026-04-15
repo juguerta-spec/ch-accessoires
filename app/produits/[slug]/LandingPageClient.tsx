@@ -18,6 +18,7 @@ import ColorSelector from '@/components/store/ColorSelector'
 import SocialProof from '@/components/store/SocialProof'
 import OrderForm from '@/components/store/OrderForm'
 import LanguageToggle from '@/components/store/LanguageToggle'
+import ExitIntentPopup from '@/components/store/ExitIntentPopup'
 
 const FAQ_FR = [
   { q: 'Quel est le délai de livraison ?', r: "Livraison offerte sous 1 à 5 jours ouvrables dans les 69 wilayas. Vous serez contacté par téléphone avant la livraison." },
@@ -174,6 +175,9 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
 
   return (
     <div style={{ background: '#FAFAF7', minHeight: '100vh' }}>
+
+      {/* ── EXIT INTENT POPUP — uniquement sur cette page produit ── */}
+      <ExitIntentPopup prix={produit.prix} formVisible={formVisible} />
 
       {/* ── CTA STICKY MOBILE — slides in after scroll, hidden on desktop ── */}
       <style>{`
