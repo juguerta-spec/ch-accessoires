@@ -6,6 +6,7 @@
 
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { Analytics } from '@vercel/analytics/next'
 import { LangueProvider } from '@/hooks/useLanguage'
 import WhatsAppFloat from '@/components/store/WhatsAppFloat'
 import '@/styles/globals.css'
@@ -63,6 +64,8 @@ export default function RootLayout({
           {children}
           <WhatsAppFloat />
         </LangueProvider>
+        {/* Vercel Analytics — métriques visiteurs, taux conversion, Web Vitals */}
+        <Analytics />
 
         {/* Meta Pixel — chargé après l'interactivité pour ne pas bloquer le rendu */}
         {pixelId && (
