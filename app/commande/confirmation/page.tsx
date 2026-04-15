@@ -59,7 +59,7 @@ function ConfirmationContenu() {
   // Message WhatsApp client → admin
   const messageClient = encodeURIComponent(
     estArabe
-      ? `السلام، كملت طلبي برقم ${numero}. واش تقدرو تأكدوا لي وقت الليفراج؟`
+      ? `السلام، كملت طلبي برقم ${numero}. واش تقدرو تأكدوا لي وقت التوصيل؟`
       : `Bonjour, j'ai passé la commande n°${numero}. Pouvez-vous confirmer le délai de livraison ?`
   )
 
@@ -82,7 +82,7 @@ function ConfirmationContenu() {
           <circle cx="14.5" cy="13.5" r="1.5" stroke="var(--ch-or)" strokeWidth="1.2"/>
         </svg>
       ),
-      titre: estArabe ? 'الليفراج مجاني' : 'Livraison offerte',
+      titre: estArabe ? 'التوصيل مجاني' : 'Livraison offerte',
       sous:  estArabe ? '1 إلى 3 أيام · تاخذ الطلب من البيرو في ولايتك' : '1 à 3 jours · retrait au bureau de votre wilaya',
     },
     {
@@ -256,7 +256,7 @@ function ConfirmationContenu() {
               fontFamily: fa, fontSize: estArabe ? '11px' : '10px',
               fontWeight: 300, color: 'var(--ch-gris-texte)',
             }}>
-              {estArabe ? 'الليفراج مجاني' : 'Livraison offerte incluse'}
+              {estArabe ? 'التوصيل مجاني' : 'Livraison offerte incluse'}
             </p>
           </div>
           <div dir="ltr">

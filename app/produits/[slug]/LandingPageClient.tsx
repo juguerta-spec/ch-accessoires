@@ -29,7 +29,7 @@ const FAQ_FR = [
 ]
 
 const FAQ_AR = [
-  { q: 'قداش يأخذ الليفراج؟', r: "الليفراج مجاني ويأخذ 1 إلى 3 أيام في قاع الـ 69 ولاية. تمشي تاخذ الطلب من البيرو في ولايتك." },
+  { q: 'قداش يأخذ التوصيل؟', r: "التوصيل مجاني ويأخذ 1 إلى 3 أيام في قاع الـ 69 ولاية. تمشي تاخذ الطلب من البيرو في ولايتك." },
   { q: 'كيفاش يتم الدفع؟', r: "تدفع غير وقت تستلم طلبك. ما كاين بطاقة — الدفع عند الاستلام (COD) غير." },
   { q: 'واش نقدر نفحص المنتج قبل ما ندفع؟', r: "آه، بالطبع. افحص طلبك قدام الموزع قبل ما تدفع. هذا حقك." },
   { q: 'واش الشنطة متوفرة بأحجام أخرى؟', r: "شنطة CH Signature متوفرة بحجم قياسي واحد، مصنوعة للاستعمال اليومي الأنيق." },
@@ -142,7 +142,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
   const WHY = estArabe ? [
     { n: '01', t: 'جودة فاخرة', c: 'جلد صناعي هاي-إند وبطانة متينة تبقى مدة طويلة. كل تفصيلة مختارة بعناية.' },
     { n: '02', t: 'ثمن في المتناول', c: 'الفاخر بـ 3500 دج. جودة عالية بثمن عادل — بلا تنازل.' },
-    { n: '03', t: 'ليفراج مجاني وسريع', c: '1–3 أيام في الـ 69 ولاية. تاخذ الطلب من البيرو في ولايتك.' },
+    { n: '03', t: 'توصيل مجاني وسريع', c: '1–3 أيام في الـ 69 ولاية. تاخذ الطلب من البيرو في ولايتك.' },
     { n: '04', t: 'راضٍ أو مسترد', c: 'افحص طلبك قدام الموزع قبل ما تدفع. رضاك الأولوية.' },
     { n: '05', t: 'هدية مثالية', c: 'تغليف أنيق وبطاقة هدية مخصصة عند الطلب. لحظة ما تنساهاش.' },
   ] : [
@@ -165,7 +165,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
 
   const garanties = estArabe ? [
     { ico: <IcoShield />, t: 'دفع عند الاستلام', c: 'ما كاين دفع مسبق' },
-    { ico: <IcoTruck />, t: 'ليفراج مجاني 1–3 أيام', c: '69 ولاية' },
+    { ico: <IcoTruck />, t: 'توصيل مجاني 1–3 أيام', c: '69 ولاية' },
     { ico: <IcoCheckCircle />, t: 'افحص قبل ما تدفع', c: 'قدام الموزع' },
   ] : [
     { ico: <IcoShield />, t: 'Paiement à la réception', c: 'Aucun paiement avant' },
@@ -361,7 +361,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
               border: '0.5px solid rgba(201,168,76,0.3)',
               padding: '3px 10px',
             }}>
-              {estArabe ? '🎁 الليفراج مجاني' : '🎁 Livraison offerte'}
+              {estArabe ? '🎁 التوصيل مجاني' : '🎁 Livraison offerte'}
             </span>
           </div>
           <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.35)', marginBottom: '14px' }}>
@@ -513,7 +513,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             },
             {
               n: estArabe ? '— ٢ —' : '— II —',
-              titre: estArabe ? 'ليفراج مجاني لقاع الجزائر' : 'Livraison offerte · 69 wilayas',
+              titre: estArabe ? 'توصيل مجاني لقاع الجزائر' : 'Livraison offerte · 69 wilayas',
               corps: estArabe ? '1–3 أيام في الـ 69 ولاية — مجاني' : '1–3 jours · sans frais',
             },
             {

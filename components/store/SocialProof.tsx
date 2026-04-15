@@ -9,7 +9,7 @@ import { useLanguage } from '@/hooks/useLanguage'
 
 const AVIS = [
   { prenom: 'Samira B.', wilaya: 'Alger', note: 5, fr: 'Qualité exceptionnelle, exactement comme sur les photos. Je suis ravie de mon achat.', ar: 'جودة عالية بزاف، بالضبط كيما في الصور. عجبتني بزاف!' },
-  { prenom: 'Karim M.', wilaya: 'Oran', note: 5, fr: "Cadeau parfait pour ma femme. Elle a adoré, livraison rapide et soignée.", ar: 'هدية زوينة لمراتي. عجبتها بزاف، الليفراج كان سريع ومرتب.' },
+  { prenom: 'Karim M.', wilaya: 'Oran', note: 5, fr: "Cadeau parfait pour ma femme. Elle a adoré, livraison rapide et soignée.", ar: 'هدية زوينة لمراتي. عجبتها بزاف، التوصيل كان سريع ومرتب.' },
   { prenom: 'Fatima Z.', wilaya: 'Constantine', note: 5, fr: "Je l'utilise tous les jours depuis un mois, très solide et élégant.", ar: 'نستعملها كل يوم من شهر، متينة بزاف وأنيقة.' },
   { prenom: 'Amira K.', wilaya: 'Annaba', note: 4, fr: 'Très beau sac, finitions soignées. Je le recommande vivement à toutes.', ar: 'شنطة زوينة بزاف، تشطيبات أنيقة. نوصي بيها لكل واحدة.' },
   { prenom: 'Yacine D.', wilaya: 'Blida', note: 5, fr: "Commandé pour offrir, elle était ravie. Le sac est vraiment beau en vrai.", ar: 'طلبتها هدية، كانت فرحانة بزاف. الشنطة زوينة حقيقي.' },

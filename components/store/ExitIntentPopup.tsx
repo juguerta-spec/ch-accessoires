@@ -158,7 +158,7 @@ export default function ExitIntentPopup({ prix, formVisible }: Props) {
             textTransform: estArabe ? 'none' : 'uppercase',
             color: '#C9A84C',
           }}>
-            {estArabe ? '🎁 الليفراج مجاني' : '🎁 Livraison offerte'}
+            {estArabe ? '🎁 التوصيل مجاني' : '🎁 Livraison offerte'}
           </span>
         </div>
 
@@ -185,7 +185,7 @@ export default function ExitIntentPopup({ prix, formVisible }: Props) {
           marginBottom: '28px',
         }}>
           {estArabe
-            ? 'الشنطة ديالك في الانتظار — ليفراج مجاني ودفع عند الاستلام'
+            ? 'الشنطة ديالك في الانتظار — توصيل مجاني ودفع عند الاستلام'
             : 'Votre sac vous attend — livraison gratuite · paiement à la réception'}
         </p>
 
