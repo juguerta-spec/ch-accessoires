@@ -82,8 +82,8 @@ function ConfirmationContenu() {
           <circle cx="14.5" cy="13.5" r="1.5" stroke="var(--ch-or)" strokeWidth="1.2"/>
         </svg>
       ),
-      titre: estArabe ? 'الليفراج مجاني لبابك' : 'Livraison offerte à votre porte',
-      sous:  estArabe ? '1 إلى 5 أيام في الـ 69 ولاية · الليفراج مجاني' : '1 à 5 jours · 69 wilayas · sans frais',
+      titre: estArabe ? 'الليفراج مجاني' : 'Livraison offerte',
+      sous:  estArabe ? '1 إلى 3 أيام · تاخذ الطلب من البيرو في ولايتك' : '1 à 3 jours · retrait au bureau de votre wilaya',
     },
     {
       ico: (

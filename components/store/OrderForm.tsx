@@ -126,7 +126,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
 
   const T = {
     titre:     estArabe ? 'كمل طلبك دروك' : 'Finaliser ma commande',
-    sous:      estArabe ? 'دفع عند الاستلام — بلا بطاقة' : 'Paiement à la livraison — sans carte',
+    sous:      estArabe ? 'دفع عند الاستلام' : 'Paiement à la livraison',
     nom:       estArabe ? 'الاسم الكامل' : 'Nom complet',
     tel:       estArabe ? 'رقم التيليفون' : 'Téléphone',
     wilaya:    estArabe ? 'الولاية' : 'Wilaya',
