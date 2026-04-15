@@ -117,9 +117,9 @@ export default function WhyChooseUs() {
                 <p
                   style={{
                     fontFamily: 'var(--font-body)',
-                    fontSize: '11px',
+                    fontSize: '13px',
                     fontWeight: 500,
-                    letterSpacing: '0.12em',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     color: 'var(--ch-noir)',
                     marginBottom: '4px',
@@ -130,10 +130,10 @@ export default function WhyChooseUs() {
                 <p
                   style={{
                     fontFamily: 'var(--font-body)',
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontWeight: 300,
                     color: 'var(--ch-gris-texte)',
-                    lineHeight: '1.6',
+                    lineHeight: '1.65',
                   }}
                 >
                   {point.corps}

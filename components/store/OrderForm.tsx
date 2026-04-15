@@ -153,7 +153,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
   const labelSt: React.CSSProperties = {
     display: 'block',
     fontFamily: fa,
-    fontSize: estArabe ? '16px' : '11px',
+    fontSize: estArabe ? '17px' : '13px',
     fontWeight: 500,
     letterSpacing: estArabe ? 0 : '0.18em',
     textTransform: estArabe ? 'none' : 'uppercase',
@@ -183,7 +183,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
       {/* En-tête formulaire */}
       <div style={{ marginBottom: '36px', paddingBottom: '28px', borderBottom: '0.5px solid rgba(201,168,76,0.2)' }}>
         <p style={{
-          fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500,
+          fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 500,
           letterSpacing: estArabe ? 0 : '0.22em', textTransform: estArabe ? 'none' : 'uppercase',
           color: '#C9A84C', marginBottom: '10px',
         }}>
@@ -197,7 +197,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
           {T.titre}
         </h3>
         <p style={{
-          fontFamily: fa, fontSize: estArabe ? '17px' : '12px',
+          fontFamily: fa, fontSize: estArabe ? '18px' : '15px',
           fontWeight: 300, color: 'rgba(201,168,76,0.7)',
           letterSpacing: estArabe ? 0 : '0.08em',
         }}>
@@ -234,7 +234,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
               <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.4)', marginBottom: '4px' }}>
                 {estArabe ? 'سولو' : 'Solo'}
               </p>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '11px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
                 {estArabe ? 'لون واحد' : '1 sac · 1 coloris'}
               </p>
               <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '20px', fontWeight: 500, color: !packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', lineHeight: 1 }}>
@@ -277,7 +277,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
               <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 600, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.4)', marginBottom: '4px' }}>
                 {estArabe ? 'باك دو' : 'Pack Duo'}
               </p>
-              <p style={{ fontFamily: fa, fontSize: '11px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
+              <p style={{ fontFamily: fa, fontSize: '13px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginBottom: '6px', lineHeight: 1.4 }}>
                 {estArabe ? 'كحل + برغاندي' : 'Noir + Burgundy'}
               </p>
               <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '20px', fontWeight: 500, color: packDuo ? '#C9A84C' : 'rgba(250,250,247,0.5)', lineHeight: 1 }}>
@@ -434,7 +434,7 @@ export default function OrderForm({ variante, variantes, onVarianteChange, prix,
         }}>
           <span style={{
             fontFamily: fa,
-            fontSize: estArabe ? '15px' : '12px',
+            fontSize: estArabe ? '16px' : '15px',
             fontWeight: 300,
             color: 'rgba(250,250,247,0.5)',
             letterSpacing: estArabe ? 0 : '0.1em',

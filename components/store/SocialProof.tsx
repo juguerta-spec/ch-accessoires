@@ -42,7 +42,7 @@ export default function SocialProof() {
 
         {/* En-tête section */}
         <div style={{ textAlign: 'center', marginBottom: '72px' }}>
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '9px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '14px' }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '12px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '14px' }}>
             {estArabe ? 'آراء عملاؤنا' : 'Témoignages'}
           </p>
           <h2 style={{ fontFamily: fd, fontSize: estArabe ? '34px' : '40px', fontWeight: estArabe ? 400 : 300, letterSpacing: estArabe ? 0 : '0.03em', color: '#FAFAF7', lineHeight: 1.2 }}>
@@ -54,7 +54,7 @@ export default function SocialProof() {
               <span key={j} style={{ color: '#C9A84C', fontSize: '16px' }}>★</span>
             ))}
           </div>
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginTop: '8px', letterSpacing: estArabe ? 0 : '0.08em' }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '13px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginTop: '8px', letterSpacing: estArabe ? 0 : '0.08em' }}>
             {estArabe ? '4.9/5 — +200 عميلة راضية' : '4.9/5 · Plus de 200 clientes satisfaites'}
           </p>
         </div>
@@ -82,8 +82,8 @@ export default function SocialProof() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '12px' }}>
             <div style={{ width: '32px', height: '0.5px', background: '#C9A84C', opacity: 0.6 }} />
             <div>
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.12em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.8)' }}>{hero.prenom}</p>
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '10px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginTop: '3px' }}>{hero.wilaya}</p>
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '13px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.12em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.8)' }}>{hero.prenom}</p>
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '12px', fontWeight: 300, color: 'rgba(250,250,247,0.35)', marginTop: '3px' }}>{hero.wilaya}</p>
             </div>
             <div style={{ width: '32px', height: '0.5px', background: '#C9A84C', opacity: 0.6 }} />
           </div>
@@ -116,8 +116,8 @@ export default function SocialProof() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexDirection: estArabe ? 'row-reverse' : 'row' }}>
                 <div style={{ width: '20px', height: '0.5px', background: '#C9A84C', opacity: 0.6 }} />
                 <div style={{ textAlign: estArabe ? 'right' : 'left' }}>
-                  <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '10px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.6)' }}>{a.prenom}</p>
-                  <p style={{ fontFamily: fa, fontSize: estArabe ? '12px' : '9px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', marginTop: '2px' }}>{a.wilaya}</p>
+                  <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '12px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.6)' }}>{a.prenom}</p>
+                  <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '11px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', marginTop: '2px' }}>{a.wilaya}</p>
                 </div>
               </div>
             </div>

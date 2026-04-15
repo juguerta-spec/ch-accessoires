@@ -45,7 +45,7 @@ function FaqItem({ q, r, open, onToggle, isAr }: { q: string; r: string; open: b
         padding: '24px 0', background: 'none', border: 'none', cursor: 'pointer', gap: 20,
         textAlign: isAr ? 'right' : 'left',
       }}>
-        <span style={{ fontFamily: font, fontSize: isAr ? '18px' : '14px', fontWeight: 400, color: '#FAFAF7', lineHeight: 1.5 }}>{q}</span>
+        <span style={{ fontFamily: font, fontSize: isAr ? '19px' : '17px', fontWeight: 400, color: '#FAFAF7', lineHeight: 1.5 }}>{q}</span>
         <span style={{
           color: '#C9A84C', fontSize: 24, flexShrink: 0,
           transition: 'transform 0.25s ease', transform: open ? 'rotate(45deg)' : 'none', lineHeight: 1,
@@ -53,7 +53,7 @@ function FaqItem({ q, r, open, onToggle, isAr }: { q: string; r: string; open: b
         }}>+</span>
       </button>
       {open && (
-        <p style={{ fontFamily: font, fontSize: isAr ? '17px' : '13px', fontWeight: 300, color: 'rgba(250,250,247,0.6)', lineHeight: 1.9, paddingBottom: 24 }}>{r}</p>
+        <p style={{ fontFamily: font, fontSize: isAr ? '18px' : '16px', fontWeight: 300, color: 'rgba(250,250,247,0.6)', lineHeight: 1.9, paddingBottom: 24 }}>{r}</p>
       )}
     </div>
   )
@@ -225,7 +225,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
         }}
       >
         <div style={{ flex: 1 }}>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.55)', marginBottom: '2px' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(201,168,76,0.55)', marginBottom: '2px' }}>
             {estArabe ? 'دفع عند الاستلام' : 'Paiement à la livraison'}
           </p>
           <p dir="ltr" style={{ fontFamily: 'var(--font-body)', fontSize: '22px', fontWeight: 500, color: '#C9A84C', lineHeight: 1 }}>
@@ -237,7 +237,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           style={{
             background: '#C9A84C', color: '#0A0A0A',
             fontFamily: fa,
-            fontSize: estArabe ? '14px' : '10px',
+            fontSize: estArabe ? '15px' : '13px',
             fontWeight: 700,
             letterSpacing: estArabe ? 0 : '0.15em',
             textTransform: estArabe ? 'none' : 'uppercase',
@@ -280,7 +280,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
               rel="noopener noreferrer"
               style={{
                 display: 'flex', alignItems: 'center', gap: '6px',
-                fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 500,
+                fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500,
                 letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: 'rgba(201,168,76,0.7)', textDecoration: 'none',
               }}
@@ -309,7 +309,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
         <div className="info-panel" ref={formRef} style={{ background: '#0A0A0A' }}>
 
           {/* Tag collection */}
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px' }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px' }}>
             {estArabe ? 'كوليكسيون 2025' : 'Collection 2025'}
           </p>
 
@@ -327,7 +327,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           </h1>
 
           {/* Coloris actif */}
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '12px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.45)', marginBottom: '26px' }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '15px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.45)', marginBottom: '26px' }}>
             {estArabe ? varianteActive.couleur_ar : varianteActive.couleur_fr}
           </p>
 
@@ -339,7 +339,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           {/* Stock count — toujours visible sous le sélecteur */}
           <p style={{
             fontFamily: fa,
-            fontSize: estArabe ? '13px' : '11px',
+            fontSize: estArabe ? '14px' : '13px',
             fontWeight: 400,
             color: varianteActive.stock <= 10 ? '#E88080' : 'rgba(201,168,76,0.55)',
             letterSpacing: estArabe ? 0 : '0.06em',
@@ -385,8 +385,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
                 borderRight: i < 2 ? '0.5px solid rgba(201,168,76,0.2)' : 'none',
               }}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '7px' }}>{item.ico}</div>
-                <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '9px', fontWeight: 700, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '2px', lineHeight: 1.2 }}>{item.t}</p>
-                <p style={{ fontFamily: fa, fontSize: estArabe ? '11px' : '9px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', letterSpacing: estArabe ? 0 : '0.04em' }}>{item.c}</p>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '12px', fontWeight: 700, letterSpacing: estArabe ? 0 : '0.1em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '2px', lineHeight: 1.2 }}>{item.t}</p>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '11px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', letterSpacing: estArabe ? 0 : '0.04em' }}>{item.c}</p>
               </div>
             ))}
           </div>
@@ -441,8 +441,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
                 {garanties.map((g, i) => (
                   <div key={i} style={{ background: '#111', padding: '18px 8px', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>{g.ico}</div>
-                    <p style={{ fontFamily: fa, fontSize: estArabe ? '12px' : '9.5px', fontWeight: 600, color: '#FAFAF7', letterSpacing: estArabe ? 0 : '0.06em', textTransform: estArabe ? 'none' : 'uppercase', lineHeight: 1.3, marginBottom: '3px' }}>{g.t}</p>
-                    <p style={{ fontFamily: fa, fontSize: estArabe ? '11px' : '10px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.4 }}>{g.c}</p>
+                    <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '13px', fontWeight: 600, color: '#FAFAF7', letterSpacing: estArabe ? 0 : '0.06em', textTransform: estArabe ? 'none' : 'uppercase', lineHeight: 1.3, marginBottom: '3px' }}>{g.t}</p>
+                    <p style={{ fontFamily: fa, fontSize: estArabe ? '13px' : '12px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.4 }}>{g.c}</p>
                   </div>
                 ))}
               </div>
@@ -451,7 +451,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             // Comment ça marche
             const blocCommentCaMarche = (
               <div style={{ marginBottom: '32px' }}>
-                <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '10px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.2em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(201,168,76,0.6)', marginBottom: '16px' }}>
+                <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '12px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.2em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(201,168,76,0.6)', marginBottom: '16px' }}>
                   {estArabe ? 'كيفاش تكمّندي' : 'Comment ça marche'}
                 </p>
                 <div>
@@ -463,7 +463,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
                       direction: estArabe ? 'rtl' : 'ltr',
                     }}>
                       <span style={{
-                        fontFamily: 'var(--font-body)', fontSize: '10px', fontWeight: 700,
+                        fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 700,
                         color: '#C9A84C', background: 'rgba(201,168,76,0.12)',
                         width: '24px', height: '24px',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
@@ -471,8 +471,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
                         {step.n}
                       </span>
                       <div>
-                        <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 500, color: '#FAFAF7', letterSpacing: estArabe ? 0 : '0.05em', marginBottom: '2px' }}>{step.t}</p>
-                        <p style={{ fontFamily: fa, fontSize: estArabe ? '14px' : '12px', fontWeight: 300, color: 'rgba(250,250,247,0.45)', lineHeight: 1.6 }}>{step.c}</p>
+                        <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '15px', fontWeight: 500, color: '#FAFAF7', letterSpacing: estArabe ? 0 : '0.05em', marginBottom: '2px' }}>{step.t}</p>
+                        <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.45)', lineHeight: 1.6 }}>{step.c}</p>
                       </div>
                     </div>
                   ))}
@@ -482,7 +482,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
 
             // Description produit
             const blocDescription = description ? (
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '13px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.85, marginBottom: '32px', maxWidth: '420px', borderTop: '0.5px solid rgba(201,168,76,0.1)', paddingTop: '24px' }}>
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', lineHeight: 1.85, marginBottom: '32px', maxWidth: '420px', borderTop: '0.5px solid rgba(201,168,76,0.1)', paddingTop: '24px' }}>
                 {description}
               </p>
             ) : null
@@ -547,8 +547,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           ].map((item, i) => (
             <div key={i} className="signature-item" style={{ textAlign: 'center' }}>
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', fontWeight: 300, color: '#C9A84C', letterSpacing: '0.2em', marginBottom: '20px', opacity: 0.7 }}>{item.n}</p>
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '20px' : '12px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.18em', textTransform: estArabe ? 'none' : 'uppercase', color: '#FAFAF7', marginBottom: '10px' }}>{item.titre}</p>
-              <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '13px', fontWeight: 300, color: 'rgba(250,250,247,0.45)', lineHeight: 1.75 }}>{item.corps}</p>
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '20px' : '15px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.18em', textTransform: estArabe ? 'none' : 'uppercase', color: '#FAFAF7', marginBottom: '10px' }}>{item.titre}</p>
+              <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.45)', lineHeight: 1.75 }}>{item.corps}</p>
             </div>
           ))}
         </div>
@@ -561,7 +561,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
         <div style={{ maxWidth: '860px', margin: '0 auto' }}>
 
           <div style={{ marginBottom: '64px', textAlign: estArabe ? 'right' : 'left' }}>
-            <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '14px' }}>
+            <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '14px' }}>
               {estArabe ? 'مميزاتنا' : 'Notre promesse'}
             </p>
             <h2 style={{ fontFamily: fd, fontSize: estArabe ? '36px' : '42px', fontWeight: estArabe ? 400 : 300, letterSpacing: estArabe ? 0 : '0.03em', color: '#0A0A0A', lineHeight: 1.15 }}>
@@ -589,10 +589,10 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
                   {item.n}
                 </span>
                 <div>
-                  <p style={{ fontFamily: fa, fontSize: estArabe ? '20px' : '12px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: '#0A0A0A', marginBottom: '10px' }}>
+                  <p style={{ fontFamily: fa, fontSize: estArabe ? '20px' : '15px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: '#0A0A0A', marginBottom: '10px' }}>
                     {item.t}
                   </p>
-                  <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '14px', fontWeight: 300, color: '#6B6660', lineHeight: 1.85 }}>
+                  <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '16px', fontWeight: 300, color: '#6B6660', lineHeight: 1.85 }}>
                     {item.c}
                   </p>
                 </div>
@@ -612,7 +612,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
         <div style={{ maxWidth: '680px', margin: '0 auto' }}>
 
           <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-            <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '14px' }}>
+            <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '14px' }}>
               {estArabe ? 'مساعدة' : 'Support'}
             </p>
             <h2 style={{ fontFamily: fd, fontSize: estArabe ? '34px' : '38px', fontWeight: estArabe ? 400 : 300, letterSpacing: estArabe ? 0 : '0.03em', color: '#FAFAF7' }}>
@@ -635,7 +635,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
         <div style={{ maxWidth: '600px', margin: '0 auto' }}>
           <div style={{ width: '48px', height: '0.5px', background: '#C9A84C', margin: '0 auto 36px', opacity: 0.8 }} />
 
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '15px' : '11px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px', opacity: 0.9 }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '13px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.24em', textTransform: estArabe ? 'none' : 'uppercase', color: '#C9A84C', marginBottom: '18px', opacity: 0.9 }}>
             {estArabe ? 'طلبي دروك' : 'Commander maintenant'}
           </p>
 
@@ -643,7 +643,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             {estArabe ? 'أضيفي اللمسة الأنيقة لإطلالتك' : "L'élégance qui vous ressemble"}
           </h2>
 
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '14px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginBottom: '48px', lineHeight: 1.8, letterSpacing: estArabe ? 0 : '0.03em' }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '16px', fontWeight: 300, color: 'rgba(250,250,247,0.4)', marginBottom: '48px', lineHeight: 1.8, letterSpacing: estArabe ? 0 : '0.03em' }}>
             {estArabe ? `${produit.prix.toLocaleString('fr-DZ')} دج — دفع عند الاستلام — توصيل لجميع الولايات` : `${produit.prix.toLocaleString('fr-DZ')} DA · Paiement à la livraison · Livraison dans toute l'Algérie`}
           </p>
 
@@ -656,7 +656,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
               background: '#C9A84C',
               color: '#0A0A0A',
               fontFamily: fa,
-              fontSize: estArabe ? '20px' : '11px',
+              fontSize: estArabe ? '20px' : '14px',
               fontWeight: estArabe ? 600 : 700,
               letterSpacing: estArabe ? 0 : '0.18em',
               textTransform: estArabe ? 'none' : 'uppercase',
@@ -669,7 +669,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             {estArabe ? <>اطلبي الآن — <span dir="ltr">{produit.prix.toLocaleString('fr-DZ')} DA</span></> : `Je veux ce sac — ${produit.prix.toLocaleString('fr-DZ')} DA`}
           </a>
 
-          <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', marginTop: '20px', letterSpacing: estArabe ? 0 : '0.04em' }}>
+          <p style={{ fontFamily: fa, fontSize: estArabe ? '17px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.3)', marginTop: '20px', letterSpacing: estArabe ? 0 : '0.04em' }}>
             {estArabe ? 'لا دفع مسبق · تدفع عند الاستلام' : 'Aucun paiement maintenant · Vous payez à la réception'}
           </p>
         </div>
@@ -689,17 +689,17 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           <div style={{ display: 'flex', gap: '28px', flexWrap: 'wrap' }}>
             {wa && (
               <a href={`https://wa.me/${wa}`} target="_blank" rel="noopener noreferrer"
-                style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(250,250,247,0.45)', textDecoration: 'none' }}>
+                style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(250,250,247,0.45)', textDecoration: 'none' }}>
                 WhatsApp
               </a>
             )}
             <a href="https://instagram.com/ch.accessoires" target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(250,250,247,0.45)', textDecoration: 'none' }}>
+              style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 500, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'rgba(250,250,247,0.45)', textDecoration: 'none' }}>
               Instagram
             </a>
           </div>
 
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '9px', fontWeight: 300, color: 'rgba(250,250,247,0.2)', letterSpacing: '0.08em' }}>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', fontWeight: 300, color: 'rgba(250,250,247,0.2)', letterSpacing: '0.08em' }}>
             © 2026 CH Accessoires — Tous droits réservés
           </p>
         </div>
