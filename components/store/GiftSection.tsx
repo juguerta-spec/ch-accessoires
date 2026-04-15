@@ -66,7 +66,7 @@ export default function GiftSection() {
           }}
         >
           {estArabe
-            ? 'شنطة CH Signature هي الهدية المثالية لعيد الميلاد، الذكرى السنوية أو أي مناسبة خاصة. زيد رسالة شخصية مع طلبك.'
+            ? 'شنطة CH بريميوم هي الهدية المثالية لعيد الميلاد، الذكرى السنوية أو أي مناسبة خاصة. زيد رسالة شخصية مع طلبك.'
             : 'Le Sac Premium CH Accessoires est le cadeau idéal pour un anniversaire, une fête ou toute occasion spéciale. Ajoutez un message personnel à votre commande.'}
         </p>
 

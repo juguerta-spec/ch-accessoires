@@ -783,7 +783,7 @@ function OngletCatalogue() {
                 style={inputSt}
                 value={formProduit.nom_fr}
                 onChange={(e) => setFormProduit((p) => ({ ...p, nom_fr: e.target.value }))}
-                placeholder="Sac CH Signature"
+                placeholder="Sac Premium CH Accessoires"
               />
             </div>
             <div>
