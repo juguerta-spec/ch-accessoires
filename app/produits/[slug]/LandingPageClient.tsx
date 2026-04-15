@@ -474,19 +474,19 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
       </div>
 
       {/* ──────────────────────────────────────────────
-          BANDE SIGNATURE — 3 piliers, fond noir
+          BANDE PILIERS — 3 engagements, fond noir
       ────────────────────────────────────────────── */}
       <section style={{ background: '#0A0A0A', borderTop: '0.5px solid rgba(201,168,76,0.2)', borderBottom: '0.5px solid rgba(201,168,76,0.2)' }}>
         <style>{`
-          .signature-grid { display: grid; grid-template-columns: 1fr; }
-          @media(min-width: 768px){ .signature-grid { grid-template-columns: repeat(3,1fr); } }
-          .signature-item { padding: 52px 40px; border-bottom: 0.5px solid rgba(201,168,76,0.12); }
+          .piliers-grid { display: grid; grid-template-columns: 1fr; }
+          @media(min-width: 768px){ .piliers-grid { grid-template-columns: repeat(3,1fr); } }
+          .piliers-item { padding: 52px 40px; border-bottom: 0.5px solid rgba(201,168,76,0.12); }
           @media(min-width: 768px){
-            .signature-item { border-bottom: none; border-right: 0.5px solid rgba(201,168,76,0.12); }
-            .signature-item:last-child { border-right: none; }
+            .piliers-item { border-bottom: none; border-right: 0.5px solid rgba(201,168,76,0.12); }
+            .piliers-item:last-child { border-right: none; }
           }
         `}</style>
-        <div className="signature-grid" style={{ maxWidth: '1280px', margin: '0 auto' }}>
+        <div className="piliers-grid" style={{ maxWidth: '1280px', margin: '0 auto' }}>
           {[
             {
               n: estArabe ? '— ١ —' : '— I —',
@@ -504,7 +504,7 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
               corps: estArabe ? 'ما تدفعش غير وقت تستلم' : 'Aucun paiement avant réception',
             },
           ].map((item, i) => (
-            <div key={i} className="signature-item" style={{ textAlign: 'center' }}>
+            <div key={i} className="piliers-item" style={{ textAlign: 'center' }}>
               <p style={{ fontFamily: 'var(--font-display)', fontSize: '14px', fontStyle: 'italic', fontWeight: 300, color: '#C9A84C', letterSpacing: '0.2em', marginBottom: '20px', opacity: 0.7 }}>{item.n}</p>
               <p style={{ fontFamily: fa, fontSize: estArabe ? '20px' : '15px', fontWeight: 500, letterSpacing: estArabe ? 0 : '0.18em', textTransform: estArabe ? 'none' : 'uppercase', color: '#FAFAF7', marginBottom: '10px' }}>{item.titre}</p>
               <p style={{ fontFamily: fa, fontSize: estArabe ? '18px' : '15px', fontWeight: 300, color: 'rgba(250,250,247,0.45)', lineHeight: 1.75 }}>{item.corps}</p>

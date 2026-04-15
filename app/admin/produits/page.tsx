@@ -763,7 +763,7 @@ function OngletCatalogue() {
                 style={inputSt}
                 value={formProduit.slug}
                 onChange={(e) => setFormProduit((p) => ({ ...p, slug: e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, '-') }))}
-                placeholder="sac-ch-signature"
+                placeholder="sac-premium-ch-accessoires"
               />
             </div>
             <div>

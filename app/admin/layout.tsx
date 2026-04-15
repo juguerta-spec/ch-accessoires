@@ -51,6 +51,15 @@ function IcoProduits() {
   )
 }
 
+function IcoFinances() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+      <path d="M1.5 10.5l3-3.5 2.5 2 3.5-5 2 2.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+      <path d="M1.5 12.5h11" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.45"/>
+    </svg>
+  )
+}
+
 function IcoDeconnexion() {
   return (
     <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -115,6 +124,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { href: '/admin/commandes', label: 'Commandes',  icon: <IcoCommandes />, badge: nbNouvelles || undefined },
     { href: '/admin/clients',   label: 'Clients',    icon: <IcoClients /> },
     { href: '/admin/produits',  label: 'Produits',   icon: <IcoProduits /> },
+    { href: '/admin/finances',  label: 'Finances',   icon: <IcoFinances /> },
   ]
 
   // Masquer la sidebar sur la page login
