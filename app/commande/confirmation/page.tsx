@@ -48,7 +48,7 @@ function ConfirmationContenu() {
       trackLead({
         eventId,
         commandeNumero: numero,
-        montant: 2500,
+        montant: 3500,
         quantite: 1,
         varianteId: commandeId,
       })
@@ -72,8 +72,8 @@ function ConfirmationContenu() {
     etape1sous:  estArabe ? 'الفريق ديالنا غادي يتصل بك في 24 ساعة' : 'Notre équipe vous contacte sous 24h',
     etape2titre: estArabe ? 'الليفراج لبابك' : 'Livraison à votre porte',
     etape2sous:  estArabe
-      ? 'الليفراج في 58 ولاية · 1 إلى 5 أيام'
-      : 'Livraison dans les 58 wilayas · 1 à 5 jours',
+      ? 'الليفراج مجاني في 69 ولاية · 1 إلى 5 أيام'
+      : 'Livraison offerte dans les 69 wilayas · 1 à 5 jours',
     etape3titre: estArabe ? 'الدفع عند الاستلام' : 'Vous payez à la livraison',
     etape3sous:  estArabe
       ? 'افحص طلبك قدام الموزع قبل ما تدفع'

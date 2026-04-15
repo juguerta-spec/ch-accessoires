@@ -20,7 +20,7 @@ import OrderForm from '@/components/store/OrderForm'
 import LanguageToggle from '@/components/store/LanguageToggle'
 
 const FAQ_FR = [
-  { q: 'Quel est le délai de livraison ?', r: "Livraison sous 1 à 5 jours ouvrables dans les 58 wilayas. Vous serez contacté par téléphone avant la livraison." },
+  { q: 'Quel est le délai de livraison ?', r: "Livraison offerte sous 1 à 5 jours ouvrables dans les 69 wilayas. Vous serez contacté par téléphone avant la livraison." },
   { q: 'Comment fonctionne le paiement ?', r: "Vous payez uniquement à la réception. Aucune carte bancaire requise — paiement Cash on Delivery (COD) uniquement." },
   { q: 'Puis-je vérifier le produit avant de payer ?', r: "Oui, absolument. Inspectez votre colis devant le livreur avant de régler. C'est votre droit." },
   { q: 'Le sac existe en d\'autres tailles ?', r: "Le Sac CH Signature est en taille unique standard, conçue pour un usage quotidien polyvalent et élégant." },
@@ -28,7 +28,7 @@ const FAQ_FR = [
 ]
 
 const FAQ_AR = [
-  { q: 'قداش يأخذ الليفراج؟', r: "الليفراج يأخذ 1 إلى 5 أيام في قاع الـ 58 ولاية. غادي يتصلو بيك بالتيليفون قبل التسليم." },
+  { q: 'قداش يأخذ الليفراج؟', r: "الليفراج مجاني ويأخذ 1 إلى 5 أيام في قاع الـ 69 ولاية. غادي يتصلو بيك بالتيليفون قبل التسليم." },
   { q: 'كيفاش يتم الدفع؟', r: "تدفع غير وقت تستلم طلبك. ما كاين بطاقة — الدفع عند الاستلام (COD) غير." },
   { q: 'واش نقدر نفحص المنتج قبل ما ندفع؟', r: "آه، بالطبع. افحص طلبك قدام الموزع قبل ما تدفع. هذا حقك." },
   { q: 'واش الشنطة متوفرة بأحجام أخرى؟', r: "شنطة CH Signature متوفرة بحجم قياسي واحد، مصنوعة للاستعمال اليومي الأنيق." },
@@ -141,13 +141,13 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
   const WHY = estArabe ? [
     { n: '01', t: 'جودة فاخرة', c: 'جلد صناعي هاي-إند وبطانة متينة تبقى مدة طويلة. كل تفصيلة مختارة بعناية.' },
     { n: '02', t: 'ثمن في المتناول', c: 'الفاخر بـ 2500 دج. جودة عالية بثمن عادل — بلا تنازل.' },
-    { n: '03', t: 'توصيل سريع', c: '1–5 أيام في الـ 58 ولاية. متابعة هاتفية شخصية قبل التسليم.' },
+    { n: '03', t: 'ليفراج مجاني وسريع', c: '1–5 أيام في الـ 69 ولاية. متابعة هاتفية شخصية قبل التسليم.' },
     { n: '04', t: 'راضٍ أو مسترد', c: 'افحص طلبك قدام الموزع قبل ما تدفع. رضاك الأولوية.' },
     { n: '05', t: 'هدية مثالية', c: 'تغليف أنيق وبطاقة هدية مخصصة عند الطلب. لحظة ما تنساهاش.' },
   ] : [
     { n: '01', t: 'Qualité premium', c: 'Cuir synthétique haut de gamme, doublure robuste. Chaque détail est pensé pour durer.' },
     { n: '02', t: 'Prix accessible', c: 'Le luxe à 2 500 DA — sans compromis sur la qualité ni le style.' },
-    { n: '03', t: 'Livraison rapide', c: 'Livraison en 1–5 jours dans les 58 wilayas. Suivi téléphonique personnalisé.' },
+    { n: '03', t: 'Livraison offerte', c: 'Livraison gratuite en 1–5 jours dans les 69 wilayas. Suivi téléphonique personnalisé.' },
     { n: '04', t: 'Vérifiez avant de payer', c: 'Inspectez votre colis devant le livreur. Vous payez seulement si vous êtes satisfait.' },
     { n: '05', t: 'Le cadeau parfait', c: 'Emballage soigné et message personnalisé disponibles sur demande.' },
   ]
@@ -164,11 +164,11 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
 
   const garanties = estArabe ? [
     { ico: <IcoShield />, t: 'دفع عند الاستلام', c: 'ما كاين دفع مسبق' },
-    { ico: <IcoTruck />, t: 'ليفراج 1–5 أيام', c: '58 ولاية' },
+    { ico: <IcoTruck />, t: 'ليفراج مجاني 1–5 أيام', c: '69 ولاية' },
     { ico: <IcoCheckCircle />, t: 'افحص قبل ما تدفع', c: 'قدام الموزع' },
   ] : [
     { ico: <IcoShield />, t: 'Paiement à la réception', c: 'Aucun paiement avant' },
-    { ico: <IcoTruck />, t: 'Livraison 1–5 jours', c: '58 wilayas' },
+    { ico: <IcoTruck />, t: 'Livraison offerte 1–5 jours', c: '69 wilayas' },
     { ico: <IcoCheckCircle />, t: 'Vérifiez avant de payer', c: 'Devant le livreur' },
   ]
 
@@ -337,15 +337,31 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
           <div dir="ltr" style={{ display: 'flex', alignItems: 'baseline', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
             {/* Prix barré — valeur de référence */}
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '18px', fontWeight: 300, color: 'rgba(201,168,76,0.35)', textDecoration: 'line-through', letterSpacing: '0.02em' }}>
-              3 990 DA
+              4 990 DA
             </span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '34px', fontWeight: 500, color: '#C9A84C', lineHeight: 1, letterSpacing: '-0.01em' }}>
               {produit.prix.toLocaleString('fr-DZ')}
             </span>
             <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 300, color: 'rgba(201,168,76,0.5)' }}>DA</span>
           </div>
+          {/* Badge livraison offerte */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
+            <span style={{
+              fontFamily: fa,
+              fontSize: estArabe ? '13px' : '10px',
+              fontWeight: 500,
+              letterSpacing: estArabe ? 0 : '0.1em',
+              textTransform: estArabe ? 'none' : 'uppercase',
+              color: '#C9A84C',
+              background: 'rgba(201,168,76,0.12)',
+              border: '0.5px solid rgba(201,168,76,0.3)',
+              padding: '3px 10px',
+            }}>
+              {estArabe ? '🎁 الليفراج مجاني' : '🎁 Livraison offerte'}
+            </span>
+          </div>
           <p style={{ fontFamily: fa, fontSize: estArabe ? '16px' : '12px', fontWeight: 400, letterSpacing: estArabe ? 0 : '0.14em', textTransform: estArabe ? 'none' : 'uppercase', color: 'rgba(250,250,247,0.35)', marginBottom: '14px' }}>
-            {estArabe ? 'دفع عند الاستلام — بلا بطاقة' : 'Paiement à la livraison — sans carte'}
+            {estArabe ? 'دفع عند الاستلام — بلا بطاقة — 69 ولاية' : 'Paiement à la livraison — 69 wilayas'}
           </p>
 
           {/* Badge social proof — commandes du jour */}
@@ -493,8 +509,8 @@ export default function LandingPageClient({ produit, variantes, commandesToday, 
             },
             {
               n: estArabe ? '— ٢ —' : '— II —',
-              titre: estArabe ? 'ليفراج لقاع الجزائر' : 'Livraison nationale',
-              corps: estArabe ? '1–5 أيام في الـ 58 ولاية' : '1–5 jours ouvrables · 58 wilayas',
+              titre: estArabe ? 'ليفراج مجاني لقاع الجزائر' : 'Livraison offerte · 69 wilayas',
+              corps: estArabe ? '1–5 أيام في الـ 69 ولاية — مجاني' : '1–5 jours ouvrables · sans frais',
             },
             {
               n: estArabe ? '— ٣ —' : '— III —',

@@ -100,7 +100,7 @@ export default function ConditionsGenerales() {
 
       <h2 style={TITRE_ST}>5. Livraison</h2>
       <p style={CORPS_ST}>
-        Nous livrons dans les <strong>58 wilayas d'Algérie</strong> via nos partenaires de livraison. Les délais indicatifs sont :
+        Nous livrons dans les <strong>69 wilayas d'Algérie</strong> via nos partenaires de livraison. Les délais indicatifs sont :
       </p>
       <ul style={LISTE_ST}>
         <li>Alger et communes limitrophes : 24 à 48 heures</li>

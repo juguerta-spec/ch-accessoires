@@ -12,10 +12,12 @@ Tout le code doit être commenté en français. Priorité absolue : performance 
 - **Marque** : CH Accessoires
 - **Domaine** : ch-accessoires.com
 - **Produit au lancement** : 1 modèle de sac, 2 coloris (Noir #1a1a1a, Caramel #C19A6B)
-- **Prix** : 2500 DA fixe
+- **Prix** : 3 500 DA — livraison offerte incluse (coût produit 1 250 DA + emballage 50 DA + livraison moy. 750 DA = marge brute ~1 450 DA)
+- **Prix barré affiché** : 4 990 DA (référence valeur perçue)
 - **Paiement** : Cash on Delivery (COD) uniquement — aucun paiement en ligne
+- **Livraison** : Offerte dans les 69 wilayas · 1–5 jours ouvrables
 - **Cible** : Femmes 18-45 ans + Hommes qui offrent un cadeau
-- **Marché** : Algérie (toutes wilayas)
+- **Marché** : Algérie (69 wilayas)
 - **Trafic** : Facebook Ads → landing page produit (mobile-first)
 - **Langues** : Français + Arabe (bilingue, toggle FR/AR, RTL auto en arabe)
 
@@ -565,7 +567,7 @@ Fichiers dans `/public/` : `logo-dark.svg`, `logo-light.svg`, `favicon.ico`, `ic
 ## Formulaire COD — règles de validation
 
 - Téléphone : regex `/^(05|06|07)[0-9]{8}$/`
-- Wilaya : dropdown des 58 wilayas d'Algérie
+- Wilaya : dropdown des 69 wilayas d'Algérie
 - Quantité : 1 à 3 maximum
 - Coloris : pré-rempli depuis le sélecteur produit
 - Message cadeau : optionnel
